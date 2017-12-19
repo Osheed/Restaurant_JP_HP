@@ -12,7 +12,7 @@ import javax.persistence.Table;
 	@Entity
 	@Table(name="Menu")
 	public class Menu {
-		//jenny
+		//jenny - Helder has received the comment
 		@Id
 		@SequenceGenerator(name="menuKey", initialValue=1, allocationSize=2)
 		@GeneratedValue(strategy = GenerationType.SEQUENCE)
