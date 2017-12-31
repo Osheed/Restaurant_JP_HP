@@ -45,6 +45,44 @@ public class Restaurant {
 	@OneToMany (mappedBy = "restaurant", cascade = CascadeType.ALL)
 	List<Rating> ratings;
 
+	//constructors
+	public Restaurant(){
+		this.menus = new ArrayList<Menu>();
+		this.ratings = new ArrayList<Rating>();
+	}
+
+	public Restaurant(String name_restaurant, String address, int postcode, String country, Owner owner) {
+		super();
+		this.name_restaurant = name_restaurant;
+		this.address = address;
+		this.postcode = postcode;
+		this.country = country;
+		this.owner = owner;
+		this.menus = new ArrayList<Menu>();
+		this.ratings = new ArrayList<Rating>();
+	}
+
+	public Restaurant(String name_restaurant, String address, int postcode, String country) {
+		this.name_restaurant = name_restaurant;
+		this.address = address;
+		this.postcode = postcode;
+		this.country = country;
+		this.menus = new ArrayList<Menu>();
+		this.ratings = new ArrayList<Rating>();
+	}
+	
+	//add objects to lists
+	public void addMenu(Menu menu){
+		menu.setRestaurant(this);
+		this.menus.add(menu);
+	}
+	
+	public void addRating(Rating rating){
+		rating.setRestaurant(this);
+		this.ratings.add(rating);
+	}
+	
+	//getters and setters
 	public Long getId() {
 		return id;
 	}
@@ -91,41 +129,6 @@ public class Restaurant {
 
 	public void setOwner(Owner owner) {
 		this.owner = owner;
-	}
-
-	public Restaurant(){
-		this.menus = new ArrayList<Menu>();
-		this.ratings = new ArrayList<Rating>();
-	}
-
-	public Restaurant(String name_restaurant, String address, int postcode, String country, Owner owner) {
-		super();
-		this.name_restaurant = name_restaurant;
-		this.address = address;
-		this.postcode = postcode;
-		this.country = country;
-		this.owner = owner;
-		this.menus = new ArrayList<Menu>();
-		this.ratings = new ArrayList<Rating>();
-	}
-
-	public Restaurant(String name_restaurant, String address, int postcode, String country) {
-		this.name_restaurant = name_restaurant;
-		this.address = address;
-		this.postcode = postcode;
-		this.country = country;
-		this.menus = new ArrayList<Menu>();
-		this.ratings = new ArrayList<Rating>();
-	}
-	
-	public void addMenu(Menu menu){
-		menu.setRestaurant(this);
-		this.menus.add(menu);
-	}
-	
-	public void addRating(Rating rating){
-		rating.setRestaurant(this);
-		this.ratings.add(rating);
 	}
 
 	@Override

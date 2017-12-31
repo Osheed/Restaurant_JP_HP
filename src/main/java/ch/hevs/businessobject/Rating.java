@@ -25,6 +25,17 @@ public class Rating {
 	@ManyToOne
 	private Restaurant restaurant;
 
+	//constructors
+	public Rating() {}
+	
+	public Rating(int amount_stars, String comment, String cusername, Restaurant restaurant) {
+		this.amount_stars = amount_stars;
+		this.comment = comment;
+		this.restaurant = restaurant;
+		this.cusername = cusername;
+	}
+
+	//getters and setters
 	public Long getId() {
 		return id;
 	}
@@ -63,16 +74,5 @@ public class Rating {
 
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
-	}
-
-	public Rating(int amount_stars, String comment, String cusername, Restaurant restaurant) {
-		this.amount_stars = amount_stars;
-		this.comment = comment;
-		this.restaurant = restaurant;
-		this.cusername = cusername;
-	}
-
-	public Rating() {
-		
 	}
 }

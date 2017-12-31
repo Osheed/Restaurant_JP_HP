@@ -36,6 +36,27 @@ public class Owner {
 	@OneToMany(mappedBy="owner",cascade = CascadeType.ALL)
 	private Set<Restaurant> restaurants;
 
+	//constructors
+	public Owner(){
+		this.restaurants = new HashSet<Restaurant>();
+	}
+
+	public Owner(String lastname, String firstname, String password, long phone, String email) {
+		super();
+		this.lastname = lastname;
+		this.firstname = firstname;
+		this.password = password;
+		this.phone = phone;
+		this.email = email;
+		this.restaurants = new HashSet<Restaurant>();
+	}
+	
+	//helper methods
+	public void addRestaurant(Restaurant restaurant){
+		restaurants.add(restaurant);
+	}
+
+	//getters and setters
 	public Long getId() {
 		return id;
 	}
@@ -92,29 +113,9 @@ public class Owner {
 		this.restaurants = restaurants;
 	}
 
-	public Owner(){
-		this.restaurants = new HashSet<Restaurant>();
-	}
-
-	public Owner(String lastname, String firstname, String password, long phone, String email) {
-		super();
-		this.lastname = lastname;
-		this.firstname = firstname;
-		this.password = password;
-		this.phone = phone;
-		this.email = email;
-		this.restaurants = new HashSet<Restaurant>();
-	}
-
 	@Override
 	public String toString() {
 		return "Owner [id=" + id + ", lastname=" + lastname + ", firstname=" + firstname + ", password=" + password
 				+ ", phone=" + phone + ", email=" + email + ", restaurants=" + restaurants + "]";
 	}
-
-		//helper methods
-	public void addRestaurant(Restaurant restaurant){
-		restaurants.add(restaurant);
-	}
-
 }
