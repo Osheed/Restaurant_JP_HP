@@ -11,22 +11,16 @@ import ch.hevs.businessobject.Menu;
 import ch.hevs.businessobject.Owner;
 import ch.hevs.businessobject.Restaurant;
 
-
-
 public class PersistenceTest {
-
-	
 	
 	@Test
 	public void test(){
 		EntityTransaction tx = null;
 		try {
-			
 			EntityManagerFactory emf = Persistence.createEntityManagerFactory("RestaurantPU");
 			EntityManager em = emf.createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();
-			 
 
 			Owner owner = new Owner("Pocas", "Helder", "test", +277225568, "email");
 			
@@ -35,9 +29,7 @@ public class PersistenceTest {
 			owner.addRestaurant(restaurant);
 			
 			Menu menu1 = new Menu("menu1", "menu1Desc", 19.90f, restaurant);
-			
 			Menu menu2 = new Menu("menu2", "menu2Desc", 25.50f, restaurant);
-			
 			Menu menu3= new Menu("menu3", "menu3Desc", 5.5f, restaurant);
 			
 			restaurant.addMenu(menu1);
@@ -48,13 +40,10 @@ public class PersistenceTest {
 			
 			//restaurant.addRating(rating);
 			
-			
 			em.persist(owner);
 			em.persist(restaurant);
 			
-			
 			tx.commit();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -65,8 +54,6 @@ public class PersistenceTest {
 			} catch (SecurityException e1) {
 				e1.printStackTrace();
 			}
-
 		}
-
 	}
 }
