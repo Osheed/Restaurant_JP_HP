@@ -1,4 +1,4 @@
-package ch.hevs.businessobject;
+package businessobject;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

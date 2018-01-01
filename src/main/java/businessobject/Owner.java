@@ -1,4 +1,4 @@
-package ch.hevs.businessobject;
+package businessobject;
 
 import java.util.HashSet;
 import java.util.Set;

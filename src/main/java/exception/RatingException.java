@@ -1,4 +1,4 @@
-package ch.hevs.exception;
+package exception;
 
 public class RatingException extends RuntimeException {
 

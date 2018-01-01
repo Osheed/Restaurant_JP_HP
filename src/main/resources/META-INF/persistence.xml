@@ -6,10 +6,10 @@
 			 version="1.0">
 	<persistence-unit name="RestaurantPU">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>ch.hevs.businessobject.Owner</class>
-		<class>ch.hevs.businessobject.Restaurant</class>
-		<class>ch.hevs.businessobject.Menu</class>
-		<class>ch.hevs.businessobject.Rating</class>
+		<class>businessobject.Owner</class>
+		<class>businessobject.Restaurant</class>
+		<class>businessobject.Menu</class>
+		<class>businessobject.Rating</class>
 		<properties>
 			<property name="hibernate.connection.url" value="jdbc:hsqldb:hsql://localhost/DB" />
 			<property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver" />

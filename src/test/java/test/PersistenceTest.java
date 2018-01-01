@@ -7,9 +7,9 @@ import javax.persistence.Persistence;
 
 import org.junit.Test;
 
-import ch.hevs.businessobject.Menu;
-import ch.hevs.businessobject.Owner;
-import ch.hevs.businessobject.Restaurant;
+import businessobject.Menu;
+import businessobject.Owner;
+import businessobject.Restaurant;
 
 public class PersistenceTest {
 	
