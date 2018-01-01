@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import businessobject.Menu;
 import businessobject.Owner;
+import businessobject.Rating;
 import businessobject.Restaurant;
 
 public class PersistenceTest {
@@ -36,9 +37,8 @@ public class PersistenceTest {
 			restaurant.addMenu(menu2);
 			restaurant.addMenu(menu3);
 			
-			//Rating rating = new Rating(5, "rating1", restaurant);
-			
-			//restaurant.addRating(rating);
+			Rating rating = new Rating(5, "comment", "rating1", restaurant);
+			restaurant.addRating(rating);
 			
 			em.persist(owner);
 			em.persist(restaurant);
