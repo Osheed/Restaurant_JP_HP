@@ -18,7 +18,7 @@ public class PersistenceTest {
 	public void test(){
 		EntityTransaction tx = null;
 		try {
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("RestaurantPU");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("testPU");
 			EntityManager em = emf.createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();

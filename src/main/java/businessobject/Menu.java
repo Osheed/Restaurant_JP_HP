@@ -14,7 +14,6 @@ import javax.persistence.Table;
 public class Menu {
 	
 	@Id
-	@SequenceGenerator(name="menuKey", initialValue=1, allocationSize=2)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	@Column(name="name")
