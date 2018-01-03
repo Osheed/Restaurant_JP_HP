@@ -1,0 +1,8 @@
+restaurantService\IRestaurant.class
+businessobject\Restaurant.class
+businessobject\Menu.class
+businessobject\Owner.class
+restaurantService\RestaurantBean.class
+businessobject\Rating.class
+managedbeans\TransferBean.class
+exception\RatingException.class

@@ -17,7 +17,7 @@ import businessobject.Restaurant;
 @Stateful
 public class RestaurantBean implements IRestaurant {
 
-	@PersistenceContext(name = "HolidayPU", type=PersistenceContextType.EXTENDED)
+	@PersistenceContext(name = "RestaurantPU", type=PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	
 	@Override

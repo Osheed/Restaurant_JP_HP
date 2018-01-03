@@ -18,7 +18,7 @@ public class PersistenceTest {
 	public void test(){
 		EntityTransaction tx = null;
 		try {
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("testPU");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("RestaurantPU");
 			EntityManager em = emf.createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();
@@ -37,11 +37,17 @@ public class PersistenceTest {
 			restaurant.addMenu(menu2);
 			restaurant.addMenu(menu3);
 			
-			Rating rating = new Rating(5, "comment", "rating1", restaurant);
+			Rating rating = new Rating(5, "comment", "cUser1", restaurant);
 			restaurant.addRating(rating);
 			
+			em.persist(menu1);
+			em.persist(menu2);
+			em.persist(menu3);
+			em.persist(rating);
 			em.persist(owner);
 			em.persist(restaurant);
+			
+			em.flush();
 			
 			tx.commit();
 		} catch (Exception e) {

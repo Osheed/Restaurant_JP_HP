@@ -14,8 +14,8 @@ public class RatingException extends RuntimeException {
 		super(arg0, arg1);
 	}
 
-	public RatingException(Throwable arg0) {
-		super(arg0);
+	public RatingException(Throwable arg2) {
+		super(arg2);
 	}
 
 }
