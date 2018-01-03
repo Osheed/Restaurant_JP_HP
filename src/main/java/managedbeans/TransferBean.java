@@ -35,6 +35,8 @@ public class TransferBean {
 		
 	}
 	
+	
+	
 	public List<String> getRestaurantNames() {
 		this.restaurantNames.add("test1");
 		this.restaurantNames.add("test2");
@@ -51,7 +53,7 @@ public class TransferBean {
     
     
     public List<Restaurant> getRestaurants() {
-		return restaurants;
+    	return restaurants;
     }
 	
 }

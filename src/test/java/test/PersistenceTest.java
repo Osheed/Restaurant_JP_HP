@@ -47,9 +47,11 @@ public class PersistenceTest {
 			em.persist(owner);
 			em.persist(restaurant);
 			
+			
 			em.flush();
 			
 			tx.commit();
+			em.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 

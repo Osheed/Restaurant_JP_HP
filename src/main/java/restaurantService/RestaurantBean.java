@@ -1,5 +1,6 @@
 package restaurantService;
 
+import java.awt.print.Printable;
 import java.util.List;
 
 import javax.ejb.Stateful;
@@ -17,7 +18,7 @@ import businessobject.Restaurant;
 @Stateful
 public class RestaurantBean implements IRestaurant {
 
-	@PersistenceContext(name = "RestaurantPU", type=PersistenceContextType.EXTENDED)
+	@PersistenceContext(name = "RestaurantPU")
 	private EntityManager em;
 	
 	@Override
@@ -28,6 +29,12 @@ public class RestaurantBean implements IRestaurant {
 			return null;
 		}
 	}
+	public void registerOwner( String lastname, String firstname,String password,long phone, String email  ){
+		Owner new_Owner = new Owner(lastname, firstname, password, phone, email);
+		em.persist(new_Owner);
+	}
+	
+	
 
 	@Override
 	public Owner getOwner(String email) {
