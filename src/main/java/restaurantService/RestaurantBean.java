@@ -1,13 +1,13 @@
 package restaurantService;
 
-import java.awt.print.Printable;
+
 import java.util.List;
 
 import javax.ejb.Stateful;
-import javax.ejb.Stateless;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 import businessobject.Menu;
@@ -16,6 +16,8 @@ import businessobject.Rating;
 import businessobject.Restaurant;
 
 @Stateful
+@ManagedBean
+
 public class RestaurantBean implements IRestaurant {
 
 	@PersistenceContext(name = "RestaurantPU")
