@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	    <ui:define name="content">
+	        <br></br>
+	        <h:form>
+	        
+	        <h:outputLabel style="font-weight:bold; margin-left:80px"
+				value="#{messages.ownerTitleLabel}"></h:outputLabel>
+							
+			<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="2" layout="grid">
+
+				<h:outputText value="#{messages.lastnameLabel}" />
+				<h:outputText value="#{registrationTransferBean.currentOwner.lastname}"></h:outputText>
+				
+				<h:outputText value="#{messages.firstnameLabel}" />
+				<h:outputText value="#{registrationTransferBean.currentOwner.firstname}"></h:outputText>
+
+				<h:outputText value="#{messages.phoneLabel}" />
+				<h:outputText value="#{registrationTransferBean.currentOwner.phone}"></h:outputText>
+
+				<h:outputText value="#{messages.emailLabel}" />
+				<h:outputText value="#{registrationTransferBean.currentOwner.email}"></h:outputText>
+				
+			</h:panelGrid>
+			
+			<br></br>
+			
+			 <h:outputLabel style="font-weight:bold; margin-left:80px"
+				value="#{messages.restaurantTitleLabel}"></h:outputLabel>
+			
+			<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="2" layout="grid">
+
+				<h:outputText value="#{messages.nameRestLabel}" />
+				<h:outputText value="#{registrationTransferBean.currentRestaurant.name_restaurant}"></h:outputText>
+				
+				<h:outputText value="#{messages.addressLabel}" />
+				<h:outputText value="#{registrationTransferBean.currentRestaurant.address}"></h:outputText>
+
+				<h:outputText value="#{messages.postcodeLabel}" />
+				<h:outputText value="#{registrationTransferBean.currentRestaurant.postcode}"></h:outputText>
+
+				<h:outputText value="#{messages.countryLabel}" />
+				<h:outputText value="#{registrationTransferBean.currentRestaurant.country}"></h:outputText>
+				
+				<h:commandButton action="#{registrationTransferBean.logout}" value="#{messages.logoutBtn}" />
+				
+				<h:commandButton action="manageMenus" value="#{messages.manageMenuBtn}" />
+				
+			</h:panelGrid>
+		    
+	        </h:form>
+	    </ui:define>
+	</ui:composition>
+</html>
