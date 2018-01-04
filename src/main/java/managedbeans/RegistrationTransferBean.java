@@ -273,7 +273,7 @@ public class RegistrationTransferBean {
 	}
 
 	public String insertRating(){		
-		// get restaurnt by checking strings name
+		// get restaurant by checking strings name
 		this.restaurantList = manageBean.getRestaurants();
 		int selectedRestIndex = -1;
 		for (int i = 0; i < this.restaurantList.size(); i++) {
