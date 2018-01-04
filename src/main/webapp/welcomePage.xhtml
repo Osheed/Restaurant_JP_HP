@@ -17,35 +17,20 @@
 		<br></br>
 		<hr style="margin: 0; width: 100%; height: 2px; background: black; border: none;" />
 		<br></br>
-
 		<h:form>
 			<h:panelGrid columns="2">
-
-				<h:inputText p:placeholder="your email..."
-					value="#{registrationTransferBean.emailLogin}"></h:inputText>
-
-				<h:inputSecret p:placeholder="your password..."
-					value="#{registrationTransferBean.passwordLogin}"></h:inputSecret>
-
-				<h:commandButton styleClass="login-btn"
-					action="#{registrationTransferBean.login}"
-					value="#{messages.loginLabel}" />
+				<h:inputText p:placeholder="your email..." value="#{registrationTransferBean.emailLogin}"></h:inputText>
+				<h:inputSecret p:placeholder="your password..." value="#{registrationTransferBean.passwordLogin}"></h:inputSecret>
+				<h:commandButton styleClass="login-btn" action="#{registrationTransferBean.login}" value="Login" />
 			</h:panelGrid>
-			
 			<br></br>
-			
 			<h:outputText style="color:red;" value="#{registrationTransferBean.loginInformation}" />
 			<br></br>
-			<hr
-				style="margin: 0; width: 100%; height: 2px; background: black; border: none;" />
+			<hr style="margin: 0; width: 100%; height: 2px; background: black; border: none;" />
 			<br></br>
-
 			<h:panelGrid columns="2">
-				<h:commandButton action="register" value="#{messages.registerLabel}" />
-
-				<h:commandButton action="rateRestaurant"
-					value="#{messages.ratetLabel}" />
-
+				<h:commandButton action="register" value="Register" />
+				<h:commandButton action="rateRestaurant" value="Rate Restaurants" />
 			</h:panelGrid>
 		</h:form>
 	</ui:define>
