@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14141592409490" configfile="/Restaurant_JP_HP/src/main/webapp/WEB-INF/faces-config.xml">
   <nodes xsi:type="pageflow:PFPage" name="welcomeBank.xhtml" x="122" y="178" id="pf15150739697150" referenceLink="//@navigationRule.0/@fromViewId|" path="/welcomeBank.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="welcomePage.xhtml" id="pf15150963464890" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf15150963464891 pf15150963464892 pf15150963464893" inlinks="pf15150963464894 pf15150963464895" path="/welcomePage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="register.xhtml" id="pf15150963464896" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15150963464894 pf15150963464897" inlinks="pf15150963464891" path="/register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="manageData.xhtml" id="pf15150963464898" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" outlinks="pf15150963464899" inlinks="pf15150963464897 pf15150963464892 pf151509634648910" path="/manageData.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="manageMenus.xhtml" id="pf151509634649011" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf151509634648910 pf151509634649012 pf15150963464895" inlinks="pf15150963464899 pf151509634649013" path="/manageMenus.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="addMenu.xhtml" id="pf151509634649014" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf151509634649013" inlinks="pf151509634649012" path="/addMenu.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="rateRestaurant.xhtml" id="pf151509634649015" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" inlinks="pf15150963464893" path="/rateRestaurant.xhtml"/>
+  <links id="pf15150963464891" target="pf15150963464896" source="pf15150963464890" outcome="register"/>
+  <links id="pf15150963464894" target="pf15150963464890" source="pf15150963464896" outcome="welcomePage"/>
+  <links id="pf15150963464897" target="pf15150963464898" source="pf15150963464896" outcome="manageData"/>
+  <links id="pf15150963464892" target="pf15150963464898" source="pf15150963464890" outcome="manageData"/>
+  <links id="pf15150963464899" target="pf151509634649011" source="pf15150963464898" outcome="manageMenus"/>
+  <links id="pf151509634648910" target="pf15150963464898" source="pf151509634649011" outcome="manageData"/>
+  <links id="pf151509634649012" target="pf151509634649014" source="pf151509634649011" outcome="addMenu"/>
+  <links id="pf151509634649013" target="pf151509634649011" source="pf151509634649014" outcome="manageMenus"/>
+  <links id="pf15150963464895" target="pf15150963464890" source="pf151509634649011" outcome="welcomePage"/>
+  <links id="pf15150963464893" target="pf151509634649015" source="pf15150963464890"/>
 </pageflow:Pageflow>
