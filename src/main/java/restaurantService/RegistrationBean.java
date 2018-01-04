@@ -9,7 +9,7 @@ import businessobject.Restaurant;
 
 public class RegistrationBean implements IRegistration {
 
-	@PersistenceContext(name = "ratingPU")
+	@PersistenceContext(name = "RestaurantPU")
 	private EntityManager em;
 	
 	@Override
