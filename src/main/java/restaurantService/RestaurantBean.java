@@ -31,6 +31,7 @@ public class RestaurantBean implements IRestaurant {
 			return null;
 		}
 	}
+	@Override
 	public void registerOwner( String lastname, String firstname,String password,long phone, String email  ){
 		Owner new_Owner = new Owner(lastname, firstname, password, phone, email);
 		em.persist(new_Owner);
