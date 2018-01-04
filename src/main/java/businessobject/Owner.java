@@ -9,9 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -111,6 +109,23 @@ public class Owner {
 
 	public void setRestaurants(Set<Restaurant> restaurants) {
 		this.restaurants = restaurants;
+	}
+	
+	public void setRestaurant(Restaurant restaurant) {
+		for (Restaurant rest : restaurants) {
+			if(rest.getId().equals(restaurant.getId())) {
+				rest = restaurant;
+			}
+		}
+	}
+	
+	public Restaurant getRestaurant(Long id) {
+		for (Restaurant restaurant : restaurants) {
+			if(restaurant.getId() == id) {
+				return restaurant;
+			}
+		}
+		return null;
 	}
 
 	@Override
