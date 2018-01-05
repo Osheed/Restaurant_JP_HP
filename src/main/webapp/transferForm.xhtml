@@ -11,29 +11,10 @@
     	<h:form>
         	<h:outputLabel value="Transfer Information:"></h:outputLabel>
         	<br></br>
-        	<h:panelGrid columns="5">
-        		<h:outputText value="source: "></h:outputText>
-        		<h:outputText value="client: "></h:outputText>
-	        	<h:selectOneMenu value="#{transferBean.sourceClientName}" valueChangeListener="#{transferBean.updateSourceAccounts}" onchange="submit()">
-	        		<f:selectItems value="#{transferBean.clientNames}"/>
-	        	</h:selectOneMenu>
-	        	<h:outputText value="account: "></h:outputText>
-	        	<h:selectOneMenu value="#{transferBean.sourceAccountDescription}">
-	        		<f:selectItems value="#{transferBean.sourceAccountDescriptions}"/>
-	        	</h:selectOneMenu>
-	        	<h:outputText value="destination: "></h:outputText>
-        		<h:outputText value="client: "></h:outputText>
-	        	<h:selectOneMenu value="#{transferBean.destinationClientName}" valueChangeListener="#{transferBean.updateDestinationAccounts}" onchange="submit()">
-	        		<f:selectItems value="#{transferBean.clientNames}"/>
-	        	</h:selectOneMenu>
-	        	<h:outputText value="account: "></h:outputText>
-	        	<h:selectOneMenu value="#{transferBean.destinationAccountDescription}">
-	        		<f:selectItems value="#{transferBean.destinationAccountDescriptions}"/>
-	        	</h:selectOneMenu>
-	        	<h:outputText value="amount:"></h:outputText>
-                <h:inputText value="#{transferBean.transactionAmount}" maxlength="6" style="width: 40px;"></h:inputText>
-        	</h:panelGrid>
-     		<h:commandButton value="transfer" action="#{transferBean.performTransfer}"></h:commandButton>
+        	<h:commandButton value="Populate DB" 
+        action="#{TransferBean.registration}"/>
+        	
+     		
         </h:form>
     </ui:define>
 </ui:composition>

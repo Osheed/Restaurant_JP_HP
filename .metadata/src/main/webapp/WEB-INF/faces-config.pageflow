@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14141592409490" configfile="/Restaurant_JP_HP/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="welcomeBank.xhtml" x="122" y="178" id="pf15150739697150" referenceLink="//@navigationRule.0/@fromViewId|" path="/welcomeBank.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="welcomeBank.xhtml" x="96" y="156" id="pf15150739697150" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15151415392030" path="/welcomeBank.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="transferForm.xhtml" x="323" y="192" id="pf15151415392031" inlinks="pf15151415392030" path="/transferForm.xhtml"/>
+  <links id="pf15151415392030" target="pf15151415392031" source="pf15150739697150"/>
 </pageflow:Pageflow>
