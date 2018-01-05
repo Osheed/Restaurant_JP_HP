@@ -44,8 +44,16 @@ public class RegistrationBean {
 	private String emailLogin;
 	private String passwordLogin;
 	
+	//Data for Restaurant
+	private String addressR;
+	private String countryR;
+	private String nameR;
+	private int postcodeR;
+	
 	//Informations
 	private String loginInformation="";
+	private String registerInformation="";
+	private String newRestaurantInformation="";
 	
 	@PostConstruct
 	public void initialize() throws NamingException {
@@ -97,6 +105,15 @@ public class RegistrationBean {
 			e.printStackTrace();
 		}
 		return this.navigateTo;
+	}
+	
+	//TODO: test for owner/DuplicatedValues(name-address)
+	public String registerNewRestaurant(){
+		manager.registerRestaurant(addressR, countryR, nameR, postcodeR, this.owner);
+		newRestaurantInformation = "New Restaurant Successfully Created ";
+		navigateTo = "manageData";
+		
+		return navigateTo;
 	}
 	
 	private boolean isEmptyLoginData(){
@@ -206,6 +223,54 @@ public class RegistrationBean {
 
 	public void setOwnerTitleLabel(String ownerTitleLabel) {
 		this.ownerTitleLabel = ownerTitleLabel;
+	}
+
+	public String getNewRestaurantInformation() {
+		return newRestaurantInformation;
+	}
+
+	public void setNewRestaurantInformation(String newRestaurantInformation) {
+		this.newRestaurantInformation = newRestaurantInformation;
+	}
+
+	public String getRegisterInformation() {
+		return registerInformation;
+	}
+
+	public void setRegisterInformation(String registerInformation) {
+		this.registerInformation = registerInformation;
+	}
+
+	public String getAddressR() {
+		return addressR;
+	}
+
+	public void setAddressR(String addressR) {
+		this.addressR = addressR;
+	}
+
+	public String getCountryR() {
+		return countryR;
+	}
+
+	public void setCountryR(String countryR) {
+		this.countryR = countryR;
+	}
+
+	public String getNameR() {
+		return nameR;
+	}
+
+	public void setNameR(String nameR) {
+		this.nameR = nameR;
+	}
+
+	public int getPostcodeR() {
+		return postcodeR;
+	}
+
+	public void setPostcodeR(int postcodeR) {
+		this.postcodeR = postcodeR;
 	}
 	
 	

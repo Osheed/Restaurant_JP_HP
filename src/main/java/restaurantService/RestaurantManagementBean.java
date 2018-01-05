@@ -26,6 +26,7 @@ public class RestaurantManagementBean implements IManagement {
 			return em.createQuery("FROM Owner").getResultList();
 		} catch (Exception e) {
 			System.out.println("RestaurantBean - getOwners failed");
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -33,10 +34,10 @@ public class RestaurantManagementBean implements IManagement {
 	public void registerOwner( String lastname, String firstname,String password,String phone, String email  ){
 		try{
 		System.out.println("RestaurantManagementBean - registerOwner");
-		System.out.println("Infos de registerOwner: "+lastname+", " +firstname+", " +password+", "+email);
+		
 		Owner new_Owner = new Owner(lastname, firstname, password, phone, email);
 		em.persist(new_Owner);
-		System.out.println("Register Owner in RestaurantManagementBean, Register Owner in RestaurantManagementBean");
+		System.out.println("RestaurantManagementBean - Register Owner");
 		}catch (Exception e){
 			System.out.println("RestaurantManagementBean - registerOwner failed");
 			e.printStackTrace();
@@ -53,6 +54,8 @@ public class RestaurantManagementBean implements IManagement {
 
 			return owner;
 		} catch (Exception e) {
+			System.out.println("RestaurantManagementBean - login failed");
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -68,10 +71,23 @@ public class RestaurantManagementBean implements IManagement {
 			return owner;
 		} catch (Exception e) {
 			System.out.println("RestaurantManagementBean - getOwner failed");
+			e.printStackTrace();
 			return null;
 		}	
 	}
-
+	@Override
+	public void registerRestaurant(String address, String country, String restaurantName, int postcode, Owner owner ) {
+		try{
+			Restaurant new_Restaurant = new Restaurant(restaurantName, address, postcode, country, owner);
+			em.persist(new_Restaurant);
+			System.out.println("RestaurantManagementBean - registerRestaurant");
+		}catch (Exception e){
+			System.out.println("RestaurantManagementBean - registerRestaurant failed");
+			e.printStackTrace();
+		}
+		
+	}
+	
 	@Override
 	public List<Restaurant> getRestaurants() {
 		try {
@@ -136,6 +152,7 @@ public class RestaurantManagementBean implements IManagement {
 		System.out.println("RestaurantManagementBean - removeMenu");
 		em.remove(menu);
 	}
+	
 
 	
 

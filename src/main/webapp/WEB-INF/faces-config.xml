@@ -23,4 +23,18 @@
 			<to-view-id>/register.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>welcomePage.xhtml</display-name>
+		<from-view-id>/welcomePage.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/manageData.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>manageData.xhtml</display-name>
+		<from-view-id>/manageData.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/addRestaurant.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

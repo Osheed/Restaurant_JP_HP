@@ -17,19 +17,24 @@
 			<h:panelGrid cellspacing="4" cellpadding="4" columns="2" style="padding:15px 0 0 0;" layout="grid">
 
 				<h:outputText value="#{messages.nameRestLabel}" />
-				<h:inputText value="#{registrationTransferBean.name_restaurant}"></h:inputText>
+				<h:inputText value="#{registrationBean.nameR}"></h:inputText>
 
 				<h:outputText value="#{messages.addressLabel}" />
-				<h:inputText value="#{registrationTransferBean.address}"></h:inputText>
+				<h:inputText value="#{registrationBean.addressR}"></h:inputText>
 
 				<h:outputText value="#{messages.postcodeLabel}" />
-				<h:inputText value="#{registrationTransferBean.postcode}"></h:inputText>
+				<h:inputText value="#{registrationBean.postcodeR}"></h:inputText>
 
 				<h:outputText value="#{messages.countryLabel}" />
-				<h:inputText value="#{registrationTransferBean.country}"></h:inputText>
+				<h:inputText value="#{registrationBean.countryR}"></h:inputText>
 
-				<h:commandButton action="welcomePage" value="#{messages.cancelBtn}" />
+				<h:commandButton action="manageData" value="#{messages.cancelBtn}" />
 
+			<h:commandButton action="#{registrationBean.registration}"
+					value="#{messages.saveNewOwnerRegBtn}" />
+
+				<h:outputText
+					value="#{registrationTransferBean.registerInformation}" />
 			</h:panelGrid>
 
 			<br></br>
