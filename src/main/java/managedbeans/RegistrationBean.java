@@ -46,7 +46,7 @@ public class RegistrationBean {
 	public void initialize() throws NamingException {
 		// use JNDI to inject reference to bank EJB
 		InitialContext ctx = new InitialContext();
-		manageBean = (IRestaurant) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/RestaurantBean!restaurantService.IRestaurant");
+		manageBean = (IRestaurant) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/RestaurantManagementBean!restaurantService.IRestaurant");
 		
 		//get restaurants
 		List<Restaurant> restaurantList = manageBean.getRestaurants();
@@ -62,9 +62,9 @@ public class RegistrationBean {
 	
 	//TODO: Tests for EmptyValues/DuplicatedValues(email)/NoSamePassword-
 	public String registration(){
-		
+			System.out.println("Infos de registration: "+lastname+", " +firstname+", " +password+", "+email);
 			manageBean.registerOwner(this.lastname, this.firstname, this.password, this.phone, this.email);
-			loginInformation = "You are Register Successfully";	
+			loginInformation = "You are Register Successfully - Enter your credentials";	
 			navigateTo = "welcomePage";
 			
 		

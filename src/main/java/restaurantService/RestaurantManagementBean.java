@@ -33,6 +33,7 @@ public class RestaurantManagementBean implements IRestaurant {
 	public void registerOwner( String lastname, String firstname,String password,String phone, String email  ){
 		try{
 		System.out.println("RestaurantManagementBean - registerOwner");
+		System.out.println("Infos de registerOwner: "+lastname+", " +firstname+", " +password+", "+email);
 		Owner new_Owner = new Owner(lastname, firstname, password, phone, email);
 		em.persist(new_Owner);
 		System.out.println("Register Owner in RestaurantManagementBean, Register Owner in RestaurantManagementBean");
