@@ -93,7 +93,7 @@ public class RegistrationBean {
 			e.printStackTrace();
 		}	*/	
 
-		this.owner = this.iregistration.login(this.emailLogin, this.passwordLogin);
+		//this.owner = this.i.login(this.emailLogin, this.passwordLogin);
 				
 		navigateTo = "manageData";
 		return this.navigateTo;
