@@ -13,16 +13,16 @@
 		        <h:outputLabel style="font-weight:bold; margin-left:80px" value="#{registrationBean.ownerTitleLabel}"></h:outputLabel>			
 				<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="2" layout="grid">
 					<h:outputText value="#{messages.lastnameLabel}" />
-					<h:outputText value="#{registrationTransferBean.currentOwner.lastname}"></h:outputText>
+					<h:outputText value="#{registrationBean.lastname}"></h:outputText>
 					
 					<h:outputText value="#{messages.firstnameLabel}" />
-					<h:outputText value="#{registrationTransferBean.currentOwner.firstname}"></h:outputText>
+					<h:outputText value="#{registrationBean.firstname}"></h:outputText>
 	
 					<h:outputText value="#{messages.phoneLabel}" />
-					<h:outputText value="#{registrationTransferBean.currentOwner.phone}"></h:outputText>
+					<h:outputText value="#{registrationBean.phone}"></h:outputText>
 	
 					<h:outputText value="#{messages.emailLabel}" />
-					<h:outputText value="#{registrationTransferBean.currentOwner.email}"></h:outputText>
+					<h:outputText value="#{registrationBean.email}"></h:outputText>
 				</h:panelGrid>
 	        </h:form>
 	    </ui:define>
