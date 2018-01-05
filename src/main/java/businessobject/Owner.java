@@ -26,7 +26,7 @@ public class Owner {
 	@Column(name="password")
 	private String password;
 	@Column(name="phone")
-	private long phone;
+	private String phone;
 	@Column(name="email")
 	private String email;
 	
@@ -39,7 +39,7 @@ public class Owner {
 		this.restaurants = new HashSet<Restaurant>();
 	}
 
-	public Owner(String lastname, String firstname, String password, long phone, String email) {
+	public Owner(String lastname, String firstname, String password, String phone, String email) {
 		super();
 		this.lastname = lastname;
 		this.firstname = firstname;
@@ -87,11 +87,11 @@ public class Owner {
 		this.password = password;
 	}
 
-	public long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

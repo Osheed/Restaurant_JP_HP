@@ -18,55 +18,33 @@
 			<h:panelGrid cellspacing="4" cellpadding="4" style="padding: 15px 0 0 0;" columns="2" layout="grid">
 
 				<h:outputText value="#{messages.lastnameLabel}" />
-				<h:inputText value="#{registrationTransferBean.lastname}"></h:inputText>
+				<h:inputText value="#{registrationBean.lastname}"></h:inputText>
 
 				<h:outputText value="#{messages.firstnameLabel}" />
-				<h:inputText value="#{registrationTransferBean.firstname}"></h:inputText>
+				<h:inputText value="#{registrationBean.firstname}"></h:inputText>
 
 				<h:outputText value="#{messages.phoneLabel}" />
-				<h:inputText value="#{registrationTransferBean.phone}"></h:inputText>
+				<h:inputText value="#{registrationBean.phone}"></h:inputText>
 
 				<h:outputText value="#{messages.emailLabel}" />
-				<h:inputText value="#{registrationTransferBean.emailRegister}"></h:inputText>
+				<h:inputText value="#{registrationBean.email}"></h:inputText>
 
 				<h:outputText value="#{messages.passwordLabel}" />
-				<h:inputSecret value="#{registrationTransferBean.passwordRegister}"></h:inputSecret>
+				<h:inputSecret value="#{registrationBean.password}"></h:inputSecret>
 
-				<h:outputText value="#{messages.passwordConfirmLabel}" />
+				<h:outputText value="#{messages.confirmPasswordLabel}" />
 				<h:inputSecret
-					value="#{registrationTransferBean.passwordRegisterConfirm}"></h:inputSecret>
+					value="#{registrationBean.confirmPassword}"></h:inputSecret>
 
 			</h:panelGrid>
 
 			<br></br>
-			<h:outputLabel style="font-weight:bold; margin-left:80px"
-				value="#{messages.registerRestLabel}"></h:outputLabel>
-
-			<h:panelGrid cellspacing="4" cellpadding="4" columns="2" style="padding:15px 0 0 0;" layout="grid">
-
-				<h:outputText value="#{messages.nameRestLabel}" />
-				<h:inputText value="#{registrationTransferBean.name_restaurant}"></h:inputText>
-
-				<h:outputText value="#{messages.addressLabel}" />
-				<h:inputText value="#{registrationTransferBean.address}"></h:inputText>
-
-				<h:outputText value="#{messages.postcodeLabel}" />
-				<h:inputText value="#{registrationTransferBean.postcode}"></h:inputText>
-
-				<h:outputText value="#{messages.countryLabel}" />
-				<h:inputText value="#{registrationTransferBean.country}"></h:inputText>
-
-				<h:commandButton action="welcomePage" value="#{messages.cancelBtn}" />
-
-				<h:commandButton action="#{registrationTransferBean.registration}"
-					value="#{messages.saveNewOwnerRestBtn}" />
+			<h:commandButton action="#{registrationBean.registration}"
+					value="#{messages.saveNewOwnerRegBtn}" />
 
 				<h:outputText
 					value="#{registrationTransferBean.registerInformation}" />
-
-			</h:panelGrid>
-
-		</h:form>
+						</h:form>
 	</ui:define>
 </ui:composition>
 </html>

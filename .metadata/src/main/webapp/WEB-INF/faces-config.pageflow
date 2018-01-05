@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14141592409490" configfile="/Restaurant_JP_HP/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="welcomeBank.xhtml" x="96" y="156" id="pf15150739697150" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15151415392030" path="/welcomeBank.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="transferForm.xhtml" x="323" y="192" id="pf15151415392031" inlinks="pf15151415392030" path="/transferForm.xhtml"/>
-  <links id="pf15151415392030" target="pf15151415392031" source="pf15150739697150"/>
+  <nodes xsi:type="pageflow:PFPage" name="welcomePage.xhtml" x="167" y="146" id="pf15151541199950" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15151542895411" path="/welcomePage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="register.xhtml" x="469" y="191" id="pf15151542895412" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15151542895411" path="/register.xhtml"/>
+  <links id="pf15151542895411" target="pf15151542895412" source="pf15151541199950" outcome="register"/>
 </pageflow:Pageflow>

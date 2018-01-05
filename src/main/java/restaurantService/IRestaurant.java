@@ -11,7 +11,7 @@ public interface IRestaurant {
 
 	public List<Owner> getOwners();
 	public Owner getOwner(String email);
-	public void registerOwner(String lastname, String firstname,String password,long phone, String email);
+	public void registerOwner(String lastname, String firstname,String password,String phone, String email);
 	
 	public List<Restaurant> getRestaurants();
 	public Restaurant getRestaurant(String name);

@@ -7,7 +7,7 @@ import javax.persistence.Query;
 import businessobject.Owner;
 import businessobject.Restaurant;
 
-public class RegistrationBean implements IRegistration {
+public class RegistrationBean2 implements IRegistration {
 
 	@PersistenceContext(name = "RestaurantPU")
 	private EntityManager em;
@@ -27,9 +27,9 @@ public class RegistrationBean implements IRegistration {
 		}
 	}
 
-	@Override
-	public void register(Owner owner, Restaurant restaurant, String lastname, String firstname, String password, int phone, String email, 
+	public void register(Owner owner, Restaurant restaurant, String lastname, String firstname, String password, String phone, String email, 
 			String name_restaurant, String address, int postcode, String country) {
+		
 		Owner ownerNew = new Owner(lastname, firstname, password, phone, email);
 		Restaurant restaurantNew = new Restaurant(name_restaurant, address, postcode, country, ownerNew);
 		ownerNew.setRestaurant(restaurantNew);
@@ -72,6 +72,13 @@ public class RegistrationBean implements IRegistration {
 
 		if (restaurant != null) {return true;}
 		return false;
+	}
+
+	@Override
+	public void register(Owner owner, Restaurant restaurant, String lastname, String firstname, String password,
+			int phone, String email, String name_restaurant, String address, int postcode, String country) {
+		// TODO Auto-generated to rename class
+		
 	}
 
 }

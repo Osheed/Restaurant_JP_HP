@@ -14,7 +14,7 @@ import businessobject.Rating;
 import businessobject.Restaurant;
 
 @Stateful
-public class RestaurantBean implements IRestaurant {
+public class RestaurantManagementBean implements IRestaurant {
 
 	@PersistenceContext(name = "RestaurantPU")
 	private EntityManager em;
@@ -30,12 +30,16 @@ public class RestaurantBean implements IRestaurant {
 		}
 	}
 	@Override
-	
-	public void registerOwner( String lastname, String firstname,String password,long phone, String email  ){
-		System.out.println("RestaurantBean - registerOwner");
+	public void registerOwner( String lastname, String firstname,String password,String phone, String email  ){
+		try{
+		System.out.println("RestaurantManagementBean - registerOwner");
 		Owner new_Owner = new Owner(lastname, firstname, password, phone, email);
 		em.persist(new_Owner);
-		System.out.println("ici aoasoasoaoaoaoaoaoaoaosodijdosifosijfosaifsao");
+		System.out.println("Register Owner in RestaurantManagementBean, Register Owner in RestaurantManagementBean");
+		}catch (Exception e){
+			System.out.println("RestaurantManagementBean - registerOwner failed");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -45,10 +49,10 @@ public class RestaurantBean implements IRestaurant {
 			query.setParameter("email", email);
 			
 			Owner owner = (Owner)query.getSingleResult();
-			System.out.println("RestaurantBean - getOwner");
+			System.out.println("RestaurantManagementBean - getOwner");
 			return owner;
 		} catch (Exception e) {
-			System.out.println("RestaurantBean - getOwner failed");
+			System.out.println("RestaurantManagementBean - getOwner failed");
 			return null;
 		}	
 	}
@@ -56,10 +60,10 @@ public class RestaurantBean implements IRestaurant {
 	@Override
 	public List<Restaurant> getRestaurants() {
 		try {
-			System.out.println("RestaurantBean - getRestaurants");
+			System.out.println("RestaurantManagementBean - getRestaurants");
 			return em.createQuery("FROM Restaurant").getResultList();
 		} catch (Exception e) {
-			System.out.println("RestaurantBean - getRestaurants failed");
+			System.out.println("RestaurantManagementBean - getRestaurants failed");
 			return null;
 		}
 	}
@@ -71,10 +75,10 @@ public class RestaurantBean implements IRestaurant {
 			query.setParameter("name_restaurant", name);
 			
 			Restaurant restaurant = (Restaurant)query.getSingleResult();
-			System.out.println("RestaurantBean - getRestaurant");
+			System.out.println("RestaurantManagementBean - getRestaurant");
 			return restaurant;
 		} catch (Exception e) {
-			System.out.println("RestaurantBean - getRestaurant failed");
+			System.out.println("RestaurantManagementBean - getRestaurant failed");
 			return null;
 		}
 	}
@@ -84,17 +88,17 @@ public class RestaurantBean implements IRestaurant {
 		try {
 			Query query = em.createQuery("FROM Menu m where m.restaurant=:restaurant");
 			query.setParameter("restaurant", currentRestaurantId);
-			System.out.println("RestaurantBean - getMenus");
+			System.out.println("RestaurantManagementBean - getMenus");
 			return query.getResultList();				
 		} catch (Exception e) {
-			System.out.println("RestaurantBean - getMenus failed");
+			System.out.println("RestaurantManagementBean - getMenus failed");
 			return null;
 		}
 	}
 
 	@Override
 	public void addMenu(String name, String desc, float price, Restaurant restaurant) {
-		System.out.println("RestaurantBean - addMenu");
+		System.out.println("RestaurantManagementBean - addMenu");
 		Menu menu = new Menu(name, desc, price, restaurant);		
 		em.persist(menu);
 	}
@@ -105,7 +109,7 @@ public class RestaurantBean implements IRestaurant {
 		menu.setDescription(desc);
 		menu.setPrice(price);
 		menu.setRestaurant(menu.getRestaurant());
-		System.out.println("RestaurantBean - updateMenu");
+		System.out.println("RestaurantManagementBean - updateMenu");
 		em.merge(menu);
 	}
 
@@ -114,13 +118,13 @@ public class RestaurantBean implements IRestaurant {
 		Query query = em.createQuery("FROM Menu m WHERE m.id=:menuId");
 		query.setParameter("menuId", menuId);
 		Menu menu = (Menu)query.getSingleResult();
-		System.out.println("RestaurantBean - removeMenu");
+		System.out.println("RestaurantManagementBean - removeMenu");
 		em.remove(menu);
 	}
 
 	@Override
 	public List<Rating> getRatings() {
-		System.out.println("RestaurantBean - getRatings");
+		System.out.println("RestaurantManagementBean - getRatings");
 		return em.createQuery("FROM Rating").getResultList();
 	}
 
@@ -129,11 +133,11 @@ public class RestaurantBean implements IRestaurant {
 		try {
 			Query query = em.createQuery("FROM Rating r where r.restaurant=:restaurant");
 			query.setParameter("restaurant", currentRestaurantId);
-			System.out.println("RestaurantBean - getSelectedRatings");
+			System.out.println("RestaurantManagementBean - getSelectedRatings");
 			return query.getResultList();			
 			
 		} catch (Exception e) {
-			System.out.println("RestaurantBean - getSelectedRatings failed");
+			System.out.println("RestaurantManagementBean - getSelectedRatings failed");
 			return null;
 		}
 	}
@@ -141,7 +145,7 @@ public class RestaurantBean implements IRestaurant {
 	@Override
 	public void insertRating(int amount_stars, String comment, String cusername, Restaurant restaurant) {
 		Rating rating = new Rating(amount_stars, comment, cusername, restaurant);
-		System.out.println("RestaurantBean - insertRating");
+		System.out.println("RestaurantManagementBean - insertRating");
 		em.persist(rating);
 	}
 
