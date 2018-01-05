@@ -43,6 +43,7 @@ public class TransferBean {
 	}
 	public void registration(){
 		owner = new Owner();
+		try{
 		manageBean.registerOwner("Pocas", "Helder", "1234", +788417093, "test@test.com");
 		System.out.println(owner+"aososoaoasofasofosfoasofdosadfoasodfasodfaosdfoasdofasofsoa");
 	}

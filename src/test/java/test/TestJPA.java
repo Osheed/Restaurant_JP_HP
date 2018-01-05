@@ -1,5 +1,6 @@
 package test;
 
+import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -11,7 +12,7 @@ import businessobject.Restaurant;
 
 public class TestJPA {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NamingException {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("RestaurantPU");
 		

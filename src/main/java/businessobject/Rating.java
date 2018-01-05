@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Rating {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Column(name="amount_stars")
 	private int amount_stars;
