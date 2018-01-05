@@ -1,14 +1,22 @@
 package restaurantService;
 
-import businessobject.Owner;
+import java.util.List;
+
+import businessobject.Rating;
 import businessobject.Restaurant;
 
-public interface IRegistration {
 
-	public Owner login(String email, String password);
+
+public interface IRating {
+
+	public void insertRating(int amount_stars, String comment, String cusername, Restaurant restaurant);
 	
-	public void register(Owner owner, Restaurant restaurant, String lastname, String firstname, String password, int phone, String email, String name_restaurant, String address, int postcode, String country);
+	public List<Rating> getRatings();
 	
-	public boolean checkEmailDuplication(IRestaurant irestaurant, String email);
-	public boolean checkRestaurantDuplication(IRestaurant irestaurant, String name);
+	public List<Rating> getSelectedRatings(Restaurant currentRestaurantId);	
+	
+	
+	
+	
+
 }

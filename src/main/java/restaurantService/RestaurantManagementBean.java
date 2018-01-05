@@ -14,7 +14,7 @@ import businessobject.Rating;
 import businessobject.Restaurant;
 
 @Stateful
-public class RestaurantManagementBean implements IRestaurant {
+public class RestaurantManagementBean implements IManagement {
 
 	@PersistenceContext(name = "RestaurantPU")
 	private EntityManager em;
@@ -40,6 +40,20 @@ public class RestaurantManagementBean implements IRestaurant {
 		}catch (Exception e){
 			System.out.println("RestaurantManagementBean - registerOwner failed");
 			e.printStackTrace();
+		}
+	}
+	@Override
+	public Owner login(String email, String password) {
+		try {
+			Query query = em.createQuery("FROM Owner o WHERE o.email=:email AND o.password=:password");
+			query.setParameter("email", email);
+			query.setParameter("password", password);
+			
+			Owner owner = (Owner)query.getSingleResult();
+
+			return owner;
+		} catch (Exception e) {
+			return null;
 		}
 	}
 
@@ -123,31 +137,6 @@ public class RestaurantManagementBean implements IRestaurant {
 		em.remove(menu);
 	}
 
-	@Override
-	public List<Rating> getRatings() {
-		System.out.println("RestaurantManagementBean - getRatings");
-		return em.createQuery("FROM Rating").getResultList();
-	}
-
-	@Override
-	public List<Rating> getSelectedRatings(Restaurant currentRestaurantId) {
-		try {
-			Query query = em.createQuery("FROM Rating r where r.restaurant=:restaurant");
-			query.setParameter("restaurant", currentRestaurantId);
-			System.out.println("RestaurantManagementBean - getSelectedRatings");
-			return query.getResultList();			
-			
-		} catch (Exception e) {
-			System.out.println("RestaurantManagementBean - getSelectedRatings failed");
-			return null;
-		}
-	}
-
-	@Override
-	public void insertRating(int amount_stars, String comment, String cusername, Restaurant restaurant) {
-		Rating rating = new Rating(amount_stars, comment, cusername, restaurant);
-		System.out.println("RestaurantManagementBean - insertRating");
-		em.persist(rating);
-	}
+	
 
 }

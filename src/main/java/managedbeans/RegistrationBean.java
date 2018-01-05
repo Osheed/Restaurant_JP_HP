@@ -10,18 +10,21 @@ import businessobject.Menu;
 import businessobject.Owner;
 import businessobject.Rating;
 import businessobject.Restaurant;
-import restaurantService.IRegistration;
-import restaurantService.IRestaurant;
+import restaurantService.IRating;
+import restaurantService.IManagement;
 
 public class RegistrationBean {
 
-	private IRestaurant irestaurant;
-	private IRegistration iregistration;
+	private IManagement manager;
+	private IRating iregistration;
 	private List<String> restaurantNames;
 	private List<Restaurant> restaurants;
 	
 	//NavigationRule
 	private String navigateTo;
+	
+	//ManageData
+	private String ownerTitleLabel;
 	
 	//Objects
 	private Owner owner;
@@ -48,10 +51,10 @@ public class RegistrationBean {
 	public void initialize() throws NamingException {
 		// use JNDI to inject reference to bank EJB
 		InitialContext ctx = new InitialContext();
-		irestaurant = (IRestaurant) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/RestaurantManagementBean!restaurantService.IRestaurant");
+		manager = (IManagement) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/RestaurantManagementBean!restaurantService.IManagement");
 		
 		//get restaurants
-		List<Restaurant> restaurantList = irestaurant.getRestaurants();
+		List<Restaurant> restaurantList = manager.getRestaurants();
 		
 		this.restaurantNames = new ArrayList<String>();
 		for(Restaurant rest : restaurantList) {
@@ -64,7 +67,7 @@ public class RegistrationBean {
 	
 	//TODO: Tests for EmptyValues/DuplicatedValues(email)/NoSamePassword-
 	public String registration(){
-		irestaurant.registerOwner(this.lastname, this.firstname, this.password, this.phone, this.email);
+		manager.registerOwner(this.lastname, this.firstname, this.password, this.phone, this.email);
 		loginInformation = "You are Register Successfully - Enter your credentials";	
 		navigateTo = "welcomePage";
 
@@ -78,7 +81,7 @@ public class RegistrationBean {
 				this.loginInformation = "Please insert all fields";
 				navigateTo = "welcomePage";
 			} 
-			Owner ownerTemp = this.iregistration.login(this.emailLogin, this.passwordLogin);
+			Owner ownerTemp = this.manager.login(this.emailLogin, this.passwordLogin);
 
 			if(ownerTemp == null){
 				this.loginInformation = "Wrong username or password";
@@ -86,8 +89,9 @@ public class RegistrationBean {
 			}
 			else {
 				this.owner = ownerTemp;
-				//this.currentRestaurant = this.manageBean.getRestaurant(this.currentOwner.getRestaurant(0L).getName_restaurant());
 				navigateTo = "manageData";
+				System.out.println( "In the login method i have "+owner.getFirstname()+" "+owner.getLastname());
+				ownerTitleLabel = "Welcome "+owner.getFirstname()+" "+owner.getLastname();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -194,6 +198,14 @@ public class RegistrationBean {
 
 	public void setLoginInformation(String loginInformation) {
 		this.loginInformation = loginInformation;
+	}
+
+	public String getOwnerTitleLabel() {
+		return ownerTitleLabel;
+	}
+
+	public void setOwnerTitleLabel(String ownerTitleLabel) {
+		this.ownerTitleLabel = ownerTitleLabel;
 	}
 	
 	
