@@ -45,7 +45,7 @@ public class TransferBean {
 		owner = new Owner();
 		try{
 		manageBean.registerOwner("Pocas", "Helder", "1234", +788417093, "test@test.com");
-		System.out.println(owner+"aososoaoasofasofosfoasofdosadfoasodfasodfaosdfoasdofasofsoa");
+		System.out.println(owner+"aososoaoasofasofosfoasofdosadfoasodfasodfaosdfoasdofasofsaoa");
 	}
 	
 	//TODO: Erase the tests
