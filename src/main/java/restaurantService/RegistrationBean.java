@@ -1,5 +1,6 @@
 package restaurantService;
 
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -7,6 +8,7 @@ import javax.persistence.Query;
 import businessobject.Owner;
 import businessobject.Restaurant;
 
+@Stateful
 public class RegistrationBean implements IRegistration {
 
 	@PersistenceContext(name = "RestaurantPU")
@@ -29,7 +31,7 @@ public class RegistrationBean implements IRegistration {
 
 	@Override
 	public void register(Owner owner, Restaurant restaurant, String lastname, String firstname, String password, int phone, String email, 
-			String name_restaurant, String address, int postcode, String country) {
+		String name_restaurant, String address, int postcode, String country) {
 		Owner ownerNew = new Owner(lastname, firstname, password, phone, email);
 		Restaurant restaurantNew = new Restaurant(name_restaurant, address, postcode, country, ownerNew);
 		ownerNew.setRestaurant(restaurantNew);

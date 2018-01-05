@@ -101,10 +101,7 @@ public class RegistrationTransferBean {
 			else {
 				this.currentOwner = new Owner();
 				this.currentRestaurant = new Restaurant();
-				this.registrationBean.register(this.currentOwner, this.currentRestaurant, 
-						lastname, firstname, passwordRegister,
-						phone, emailRegister, name_restaurant, address,
-						postcode, country);
+				this.registrationBean.register(this.currentOwner, this.currentRestaurant, lastname, firstname, passwordRegister, phone, emailRegister, name_restaurant, address, postcode, country);
 
 				Owner ownerTemp = this.registrationBean.login(this.emailRegister, this.passwordRegister);
 				this.currentOwner = ownerTemp;

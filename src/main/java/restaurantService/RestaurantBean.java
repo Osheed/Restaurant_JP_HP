@@ -14,7 +14,6 @@ import businessobject.Rating;
 import businessobject.Restaurant;
 
 @Stateful
-@ManagedBean
 public class RestaurantBean implements IRestaurant {
 
 	@PersistenceContext(name = "RestaurantPU")
