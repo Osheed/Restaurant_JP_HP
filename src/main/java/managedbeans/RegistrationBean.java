@@ -10,11 +10,13 @@ import businessobject.Menu;
 import businessobject.Owner;
 import businessobject.Rating;
 import businessobject.Restaurant;
+import restaurantService.IRegistration;
 import restaurantService.IRestaurant;
 
 public class RegistrationBean {
 
-	private IRestaurant manageBean;
+	private IRestaurant irestaurant;
+	private IRegistration iregistration;
 	private List<String> restaurantNames;
 	private List<Restaurant> restaurants;
 	
@@ -46,10 +48,10 @@ public class RegistrationBean {
 	public void initialize() throws NamingException {
 		// use JNDI to inject reference to bank EJB
 		InitialContext ctx = new InitialContext();
-		manageBean = (IRestaurant) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/RestaurantManagementBean!restaurantService.IRestaurant");
+		irestaurant = (IRestaurant) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/RestaurantManagementBean!restaurantService.IRestaurant");
 		
 		//get restaurants
-		List<Restaurant> restaurantList = manageBean.getRestaurants();
+		List<Restaurant> restaurantList = irestaurant.getRestaurants();
 		
 		this.restaurantNames = new ArrayList<String>();
 		for(Restaurant rest : restaurantList) {
@@ -62,19 +64,44 @@ public class RegistrationBean {
 	
 	//TODO: Tests for EmptyValues/DuplicatedValues(email)/NoSamePassword-
 	public String registration(){
-			System.out.println("Infos de registration: "+lastname+", " +firstname+", " +password+", "+email);
-			manageBean.registerOwner(this.lastname, this.firstname, this.password, this.phone, this.email);
-			loginInformation = "You are Register Successfully - Enter your credentials";	
-			navigateTo = "welcomePage";
-			
-		
-			return navigateTo;
+		irestaurant.registerOwner(this.lastname, this.firstname, this.password, this.phone, this.email);
+		loginInformation = "You are Register Successfully - Enter your credentials";	
+		navigateTo = "welcomePage";
+
+		return navigateTo;
 	}
 	
 	
 	public String login(){
-		navigateTo = "welcomePage";
+		/*try {
+			if (isEmptyLoginData()) {
+				this.loginInformation = "Please insert all fields";
+				navigateTo = "welcomePage";
+			} 
+			Owner ownerTemp = this.registrationBean.login(this.emailLogin, this.passwordLogin);
+
+			if(ownerTemp == null){
+				this.loginInformation = "Wrong username or password";
+				navigateTo = "welcomePage";
+			}
+			else {
+				this.owner = ownerTemp;
+				//this.currentRestaurant = this.manageBean.getRestaurant(this.currentOwner.getRestaurant(0L).getName_restaurant());
+				navigateTo = "manageData";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	*/	
+
+		this.owner = this.iregistration.login(this.emailLogin, this.passwordLogin);
+				
+		navigateTo = "manageData";
 		return this.navigateTo;
+	}
+	
+	private boolean isEmptyLoginData(){
+		if(this.emailLogin.isEmpty() || this.emailLogin.trim().equals("") || this.passwordLogin.isEmpty() || this.passwordLogin.trim().equals("")) {return true;}
+		return false;
 	}
 	
 	//TODO: Erase the tests
@@ -92,7 +119,7 @@ public class RegistrationBean {
     	return restaurantNames;
     }
     
-  //TODO: Check if is correct
+    //TODO: Check if is correct
     public List<Restaurant> getRestaurants() {
     	return restaurants;
     }
@@ -104,9 +131,11 @@ public class RegistrationBean {
     public String getNavigateTo() {
 		return navigateTo;
 	}
+    
 	public void setNavigateTo(String navigateTo) {
 		this.navigateTo = navigateTo;
 	}
+	
 	/*
 	 * Getters & Setters
 	 */
