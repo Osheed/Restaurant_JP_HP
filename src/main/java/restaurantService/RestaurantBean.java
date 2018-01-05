@@ -16,7 +16,6 @@ import businessobject.Rating;
 import businessobject.Restaurant;
 
 @Stateful
-@ManagedBean
 
 public class RestaurantBean implements IRestaurant {
 
@@ -34,6 +33,7 @@ public class RestaurantBean implements IRestaurant {
 	public void registerOwner( String lastname, String firstname,String password,long phone, String email  ){
 		Owner new_Owner = new Owner(lastname, firstname, password, phone, email);
 		em.persist(new_Owner);
+		System.out.println("ici aoasoasoaoaoaoaoaoaoaosodijdosifosijfosaifsao");
 	}
 	
 	

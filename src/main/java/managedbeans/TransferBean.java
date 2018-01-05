@@ -38,13 +38,13 @@ public class TransferBean {
 			this.restaurantNames.add(rest.getName_restaurant());
 		}
 		
-		
+		System.out.println("Test initialise lalslaosoasoasoaolalaoalaoalaasoalasosao");
 		
 	}
 	public void registration(){
 		owner = new Owner();
 		manageBean.registerOwner("Pocas", "Helder", "1234", +788417093, "test@test.com");
-		System.out.println(owner);
+		System.out.println(owner+"aososoaoasofasofosfoasofdosadfoasodfasodfaosdfoasdofasofsoa");
 	}
 	
 	//TODO: Erase the tests
