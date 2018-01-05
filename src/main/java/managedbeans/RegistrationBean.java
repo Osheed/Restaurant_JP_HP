@@ -73,12 +73,12 @@ public class RegistrationBean {
 	
 	
 	public String login(){
-		/*try {
+		try {
 			if (isEmptyLoginData()) {
 				this.loginInformation = "Please insert all fields";
 				navigateTo = "welcomePage";
 			} 
-			Owner ownerTemp = this.registrationBean.login(this.emailLogin, this.passwordLogin);
+			Owner ownerTemp = this.iregistration.login(this.emailLogin, this.passwordLogin);
 
 			if(ownerTemp == null){
 				this.loginInformation = "Wrong username or password";
@@ -91,11 +91,7 @@ public class RegistrationBean {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}	*/	
-
-		//this.owner = this.i.login(this.emailLogin, this.passwordLogin);
-				
-		navigateTo = "manageData";
+		}
 		return this.navigateTo;
 	}
 	
