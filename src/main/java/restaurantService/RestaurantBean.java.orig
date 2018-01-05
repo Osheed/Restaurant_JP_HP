@@ -14,7 +14,11 @@ import businessobject.Rating;
 import businessobject.Restaurant;
 
 @Stateful
+<<<<<<< HEAD
+
+=======
 @ManagedBean
+>>>>>>> origin/master
 public class RestaurantBean implements IRestaurant {
 
 	@PersistenceContext(name = "RestaurantPU")
@@ -30,15 +34,13 @@ public class RestaurantBean implements IRestaurant {
 			return null;
 		}
 	}
-<<<<<<< HEAD
 	@Override
-=======
 	
->>>>>>> 3020ce51c7c945e50ff52258b6753e1542dbc641
 	public void registerOwner( String lastname, String firstname,String password,long phone, String email  ){
 		System.out.println("RestaurantBean - registerOwner");
 		Owner new_Owner = new Owner(lastname, firstname, password, phone, email);
 		em.persist(new_Owner);
+		System.out.println("ici aoasoasoaoaoaoaoaoaoaosodijdosifosijfosaifsao");
 	}
 
 	@Override
