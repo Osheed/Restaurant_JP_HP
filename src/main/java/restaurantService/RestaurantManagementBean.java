@@ -79,10 +79,12 @@ public class RestaurantManagementBean implements IManagement {
 	public void registerRestaurant(String address, String country, String restaurantName, int postcode, Owner owner ) {
 		try{
 			//LazyLoading to not charge all the related tables just owner 
+			/*System.out.println("In registerRestaurant the value of owner id is:"+owner.getId());*/
+			owner = em.find(Owner.class, owner.getId());
 			Restaurant new_Restaurant = new Restaurant(restaurantName, address, postcode, country, owner);
-			em.find(Owner.class, owner.getId());
-			owner.setRestaurant(new_Restaurant);
+			//owner.setRestaurant(new_Restaurant);
 			em.persist(new_Restaurant);
+			//em.merge(owner);
 			System.out.println("RestaurantManagementBean - registerRestaurant");
 		}catch (Exception e){
 			System.out.println("RestaurantManagementBean - registerRestaurant failed");

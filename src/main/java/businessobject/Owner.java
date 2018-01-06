@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +32,7 @@ public class Owner {
 	@Column(name="email")
 	private String email;
 	
-	// relations : : FetchType Lazy by default
+	// relations : FetchType Lazy by default
 	@OneToMany(mappedBy="owner",cascade = CascadeType.ALL)
 	@OrderBy("name_restaurant")
 	Set<Restaurant> restaurants;
@@ -54,7 +55,7 @@ public class Owner {
 	//helper methods
 	public void addRestaurant(Restaurant restaurant){
 		restaurant.setOwner(this);
-		restaurants.add(restaurant);
+		this.restaurants.add(restaurant);
 	}
 
 	//getters and setters
@@ -106,24 +107,6 @@ public class Owner {
 		this.email = email;
 	}
 
-	
-	
-	public void setRestaurant(Restaurant restaurant) {
-		for (Restaurant rest : restaurants) {
-			if(rest.getId().equals(restaurant.getId())) {
-				rest = restaurant;
-			}
-		}
-	}
-	
-	public Restaurant getRestaurant(Long id) {
-		for (Restaurant restaurant : restaurants) {
-			if(restaurant.getId() == id) {
-				return restaurant;
-			}
-		}
-		return null;
-	}
 
 	@Override
 	public String toString() {
