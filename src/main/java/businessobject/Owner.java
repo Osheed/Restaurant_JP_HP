@@ -1,6 +1,8 @@
 package businessobject;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -35,11 +37,11 @@ public class Owner {
 	// relations : FetchType Lazy by default
 	@OneToMany(mappedBy="owner",cascade = CascadeType.ALL)
 	@OrderBy("name_restaurant")
-	Set<Restaurant> restaurants;
+	List<Restaurant> restaurants;
 
 	//constructors
 	public Owner(){
-		this.restaurants = new HashSet<Restaurant>();
+		this.restaurants = new ArrayList<Restaurant>();
 	}
 
 	public Owner(String lastname, String firstname, String password, String phone, String email) {
@@ -49,7 +51,7 @@ public class Owner {
 		this.password = password;
 		this.phone = phone;
 		this.email = email;
-		this.restaurants = new HashSet<Restaurant>();
+		this.restaurants = new ArrayList<Restaurant>();
 	}
 	
 	//helper methods

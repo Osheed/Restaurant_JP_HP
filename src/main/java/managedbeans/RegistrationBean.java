@@ -122,25 +122,7 @@ public class RegistrationBean {
 		return false;
 	}
 	
-	//TODO: Erase the tests
-	public List<String> getRestaurantNames() {
-		this.restaurantNames.add("test1");
-		this.restaurantNames.add("test2");
-		this.restaurantNames.add("test3");
-    	return restaurantNames;
-    }
-	//TODO: Erase the tests
-    public List<String> restaurantNames() {
-		this.restaurantNames.add("test1");
-		this.restaurantNames.add("test2");
-		this.restaurantNames.add("test3");
-    	return restaurantNames;
-    }
-    
-    //TODO: Check if is correct
-    public List<Restaurant> getRestaurants() {
-    	return restaurants;
-    }
+
 	
     
     /*
