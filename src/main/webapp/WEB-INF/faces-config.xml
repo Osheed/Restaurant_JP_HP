@@ -32,6 +32,7 @@
 		<display-name>welcomePage.xhtml</display-name>
 		<from-view-id>/welcomePage.xhtml</from-view-id>
 		<navigation-case>
+		<display-name>manageData.xhtml</display-name>
 			<to-view-id>/manageData.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -39,6 +40,7 @@
 		<display-name>manageData.xhtml</display-name>
 		<from-view-id>/manageData.xhtml</from-view-id>
 		<navigation-case>
+		<display-name>addRestaurant.xhtml</display-name>
 			<to-view-id>/addRestaurant.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -46,6 +48,7 @@
 		<display-name>manageData.xhtml</display-name>
 		<from-view-id>/manageData.xhtml</from-view-id>
 		<navigation-case>
+			<display-name>manageMenus.xhtml</display-name>
 			<to-view-id>/manageMenus.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>

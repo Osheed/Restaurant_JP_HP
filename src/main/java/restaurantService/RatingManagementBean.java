@@ -41,4 +41,10 @@ public class RatingManagementBean implements IRating{
 		System.out.println("RestaurantManagementBean - insertRating");
 		em.persist(rating);
 	}
+
+	@Override
+	public List<Restaurant> getRestaurants() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
