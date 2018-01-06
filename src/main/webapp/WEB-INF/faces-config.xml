@@ -37,4 +37,11 @@
 			<to-view-id>/addRestaurant.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>manageData.xhtml</display-name>
+		<from-view-id>/manageData.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/manageMenus.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>
