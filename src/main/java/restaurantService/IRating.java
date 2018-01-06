@@ -15,7 +15,7 @@ public interface IRating {
 	
 	public List<Rating> getSelectedRatings(Restaurant currentRestaurantId);	
 	
-	
+	public List<Restaurant> getRestaurants();
 	
 	
 

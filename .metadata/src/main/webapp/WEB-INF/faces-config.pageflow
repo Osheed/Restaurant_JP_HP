@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14141592409490" configfile="/Restaurant_JP_HP/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="welcomePage.xhtml" x="120" y="12" id="pf15151541199950" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15151542895411 pf15151843508300" path="/welcomePage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="welcomePage.xhtml" x="120" y="12" id="pf15151541199950" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15151542895411 pf15151843508300" path="/welcomePage.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="register.xhtml" x="394" y="48" id="pf15151542895412" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15151542895411" path="/register.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="manageData.xhtml" x="124" y="132" id="pf15151843508301" outlinks="pf15151843508302" inlinks="pf15151843508300" path="/manageData.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="addRestaurant.xhtml" x="144" y="228" id="pf15151843508303" inlinks="pf15151843508302" path="/addRestaurant.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="manageData.xhtml" x="124" y="132" id="pf15151843508301" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15151843508302" inlinks="pf15151843508300" path="/manageData.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="addRestaurant.xhtml" x="144" y="228" id="pf15151843508303" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf15151843508302" path="/addRestaurant.xhtml"/>
   <links id="pf15151542895411" target="pf15151542895412" source="pf15151541199950" outcome="register"/>
   <links id="pf15151843508300" target="pf15151843508301" source="pf15151541199950"/>
   <links id="pf15151843508302" target="pf15151843508303" source="pf15151843508301"/>
