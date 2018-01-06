@@ -23,8 +23,7 @@
 	
 					<h:outputText value="#{messages.emailLabel}" />
 					<h:outputText value="#{registrationBean.email}"></h:outputText>
-					<h:commandButton action="addRestaurant" value="#{messages.registerRestLabel}" />
-				</h:panelGrid>
+			    </h:panelGrid>
 				<br></br>
 				<table style="border: 1px solid black; border-collapse: collapse; margin:15px 0 0 0;">
 					<thead>
@@ -33,6 +32,7 @@
 							<th style="border: 1px solid black;padding: 8px;">Address</th>
 							<th style="border: 1px solid black;padding: 8px;">Post code</th>
 							<th style="border: 1px solid black;padding: 8px;">Country</th>
+							<th style="border: 1px solid black;padding: 8px;">Restaurant details</th>
 						</tr>
 					</thead>
 					<ui:repeat value="#{registrationBean.restaurants}" var="field">
@@ -41,6 +41,9 @@
 							<td style="border: 1px solid black;padding: 8px;">#{field.address}</td>
 							<td style="border: 1px solid black;padding: 8px;">#{field.postcode}</td>
 							<td style="border: 1px solid black;padding: 8px;">#{field.country}</td>
+							<td>
+								<h:commandButton action="manageMenus" value="details" />
+							</td>
 						</tr>
 					</ui:repeat>
 				</table>
