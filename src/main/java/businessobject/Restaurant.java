@@ -33,15 +33,15 @@ public class Restaurant {
 	@Column(name="country")
 	private String country;
 
-	// relations
+	// relations : FetchType Eager by default
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Owner owner;
 	
-	// add relations
+	// add relations : FetchType Lazy by default
 	@OneToMany (mappedBy = "restaurant", cascade = CascadeType.ALL)
 	List<Menu> menus;
 	
-	// add relations
+	// add relations : FetchType Lazy by default
 	@OneToMany (mappedBy = "restaurant", cascade = CascadeType.ALL)
 	List<Rating> ratings;
 

@@ -22,7 +22,8 @@ public class Rating {
 	@Column(name="cusername")
 	private String cusername;
 	
-	@ManyToOne
+	//Add relations : : FetchType Eager by default
+	@ManyToOne 
 	private Restaurant restaurant;
 
 	//constructors

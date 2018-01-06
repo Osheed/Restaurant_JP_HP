@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 @Entity
@@ -30,9 +31,10 @@ public class Owner {
 	@Column(name="email")
 	private String email;
 	
-	// relations
+	// relations : : FetchType Lazy by default
 	@OneToMany(mappedBy="owner",cascade = CascadeType.ALL)
-	private Set<Restaurant> restaurants;
+	@OrderBy("name_restaurant")
+	Set<Restaurant> restaurants;
 
 	//constructors
 	public Owner(){
@@ -51,6 +53,7 @@ public class Owner {
 	
 	//helper methods
 	public void addRestaurant(Restaurant restaurant){
+		restaurant.setOwner(this);
 		restaurants.add(restaurant);
 	}
 
@@ -103,13 +106,7 @@ public class Owner {
 		this.email = email;
 	}
 
-	public Set<Restaurant> getRestaurants() {
-		return restaurants;
-	}
-
-	public void setRestaurants(Set<Restaurant> restaurants) {
-		this.restaurants = restaurants;
-	}
+	
 	
 	public void setRestaurant(Restaurant restaurant) {
 		for (Restaurant rest : restaurants) {

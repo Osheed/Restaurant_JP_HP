@@ -25,8 +25,8 @@
 					<h:inputText value="#{registrationBean.countryR}"></h:inputText>
 	
 					<h:commandButton action="manageData" value="#{messages.cancelBtn}" />
-					<h:commandButton action="#{registrationBean.registration}" value="#{messages.saveNewOwnerRegBtn}" />
-					<h:outputText value="#{registrationTransferBean.registerInformation}" />
+					<h:commandButton action="#{registrationBean.registerNewRestaurant}" value="#{messages.saveNewOwnerRegBtn}" />
+					<h:outputText value="#{registrationBean.newRestaurantInformation}" />
 				</h:panelGrid>
 				<br></br>
 			</h:form>

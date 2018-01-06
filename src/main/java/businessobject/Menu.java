@@ -22,8 +22,9 @@ public class Menu {
 	private String description;
 	@Column(name="price")
 	private float price;
-		
-	@ManyToOne
+	
+	//Relations : FetchType Eager by default
+	@ManyToOne 
 	private Restaurant restaurant;
 	
 	//constructors

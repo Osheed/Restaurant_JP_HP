@@ -109,6 +109,7 @@ public class RegistrationBean {
 	
 	//TODO: test for owner/DuplicatedValues(name-address)
 	public String registerNewRestaurant(){
+		
 		manager.registerRestaurant(addressR, countryR, nameR, postcodeR, this.owner);
 		newRestaurantInformation = "New Restaurant Successfully Created ";
 		navigateTo = "manageData";
