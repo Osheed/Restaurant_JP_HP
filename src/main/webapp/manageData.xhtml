@@ -26,8 +26,29 @@
 					<h:commandButton action="addRestaurant" value="#{messages.registerRestLabel}" />
 				</h:panelGrid>
 				<br></br>
-				<h:panelGrid columns="2">
+				<table style="border: 1px solid black; border-collapse: collapse; margin:15px 0 0 0;">
+					<thead>
+						<tr style="border: 1px solid black; padding: 8px; background:#0371A8; color:white;">
+							<th style="border: 1px solid black; padding: 8px;">Restaurant Name</th>
+							<th style="border: 1px solid black;padding: 8px;">Address</th>
+							<th style="border: 1px solid black;padding: 8px;">Post code</th>
+							<th style="border: 1px solid black;padding: 8px;">Country</th>
+						</tr>
+					</thead>
+					<ui:repeat value="#{registrationBean.restaurants}" var="field">
+						<tr style="border: 1px solid black;">
+							<td style="border: 1px solid black;padding: 5px;">#{field.name_restaurant}</td>
+							<td style="border: 1px solid black;padding: 8px;">#{field.address}</td>
+							<td style="border: 1px solid black;padding: 8px;">#{field.postcode}</td>
+							<td style="border: 1px solid black;padding: 8px;">#{field.country}</td>
+						</tr>
+					</ui:repeat>
+				</table>
+				<br></br>
+				<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="3" layout="grid">
 					<h:commandButton action="addRestaurant" value="add Restaurant" />
+					<h:commandButton action="#{registrationTransferBean.logout}" value="#{messages.logoutBtn}" />
+					<h:commandButton action="manageData" value="#{messages.backBtn}" />
 				</h:panelGrid>
 	        </h:form>
 	    </ui:define>

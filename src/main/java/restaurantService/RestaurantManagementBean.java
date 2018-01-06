@@ -158,7 +158,11 @@ public class RestaurantManagementBean implements IManagement {
 		em.remove(menu);
 	}
 	
-
-	
-
+	@Override
+	public void removeRestaurant(long restId) {
+		Query query = em.createQuery("FROM Restaurant m WHERE m.id=:restId");
+		query.setParameter("restId", restId);
+		Restaurant rest = (Restaurant)query.getSingleResult();
+		em.remove(rest);
+	}
 }

@@ -21,6 +21,7 @@ public interface IManagement {
 	public void registerRestaurant(String address, String country, String restaurantName, int postcode,Owner owner_id);
 	public List<Restaurant> getRestaurants();
 	public Restaurant getRestaurant(String name);
+	public void removeRestaurant(long restId);
 	//public boolean checkRestaurantDuplication(IManagement imanage, String name);
 	
 	

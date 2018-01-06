@@ -123,6 +123,23 @@ public class RegistrationBean {
 	}
 	
 
+	public String editRestaurant(Restaurant r){
+		this.restaurant = r;
+
+		// set data on variables of the menu to display
+		this.nameR = r.getName_restaurant();
+		this.addressR = r.getAddress();
+		this.postcodeR = r.getPostcode();
+		this.countryR = r.getCountry();
+
+		navigateTo = "addRestaurant";
+		return navigateTo;
+	}
+	
+	public String removeRestaurant(Restaurant r){
+		this.manager.removeRestaurant(r.getId());
+		return null;
+	}
 	
     
     /*
@@ -139,9 +156,19 @@ public class RegistrationBean {
 	/*
 	 * Getters & Setters
 	 */
+	
 	public String getLastname() {
 		return lastname;
 	}
+	public List<Restaurant> getRestaurants() {
+		List<Restaurant> restaurants = this.manager.getRestaurants();
+		return restaurants;
+	}
+
+	public void setRestaurants(List<Restaurant> restaurants) {
+		this.restaurants = restaurants;
+	}
+
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
