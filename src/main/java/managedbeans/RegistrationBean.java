@@ -225,6 +225,17 @@ public class RegistrationBean {
 		this.loginInformation = "";
 	}	
     
+	public String details(){
+		System.out.println("value of is RestaurantinDB() : "+isRestaurantInDB());
+		if(isRestaurantInDB()){
+			navigateTo = "manageMenus";
+		}
+		else{
+			navigateTo = "manageData";
+		}
+		return navigateTo;
+	}
+	
     /*
      * NavigationRule: Method to navigate 
      */
