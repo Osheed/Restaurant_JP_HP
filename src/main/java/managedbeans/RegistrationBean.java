@@ -115,6 +115,7 @@ public class RegistrationBean {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		this.emailLogin = "";
 		return this.navigateTo;
 	}
 	
@@ -126,7 +127,6 @@ public class RegistrationBean {
 		//resetValueNull();
 		return "welcomePage";
 	}
-	
 	
 	/*
 	 * Managing the Restaurants
