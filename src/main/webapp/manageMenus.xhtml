@@ -17,13 +17,15 @@
 							<th style="border: 1px solid black; padding: 8px;">Name Menu</th>
 							<th style="border: 1px solid black;padding: 8px;">Description</th>
 							<th style="border: 1px solid black;padding: 8px;">Price in CHF</th>
+							<th style="border: 1px solid black;padding: 8px;">Restaurant name</th>
 						</tr>
 					</thead>
-					<ui:repeat value="#{registrationTransferBean.menus}" var="field">
+					<ui:repeat value="#{registrationBean.menus}" var="field">
 						<tr style="border: 1px solid black;">
 							<td style="border: 1px solid black;padding: 5px;">#{field.name}</td>
 							<td style="border: 1px solid black;padding: 8px;">#{field.description}</td>
 							<td style="border: 1px solid black;padding: 8px;">#{field.price}</td>
+							<td style="border: 1px solid black;padding: 8px;">#{field.restaurant.name_restaurant}</td>
 							<td><h:commandButton action="#{registrationBean.removeMenu(field)}" value="#{messages.removeBtn}" /></td>
 							<td><h:commandButton action="#{registrationBean.editMenu(field)}" value="#{messages.editBtn}" /></td>
 						</tr>

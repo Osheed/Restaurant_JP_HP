@@ -19,6 +19,7 @@ public class RegistrationBean {
 	private IRating iregistration;
 	private List<String> restaurantNames;
 	private List<Restaurant> restaurants;
+	private List<Menu> menus;
 	
 	//NavigationRule
 	private String navigateTo;
@@ -235,6 +236,7 @@ public class RegistrationBean {
 	public String getLastname() {
 		return lastname;
 	}
+	
 	public List<Restaurant> getRestaurants() {
 		List<Restaurant> restaurants = this.manager.getRestaurants();
 		return restaurants;
@@ -242,6 +244,15 @@ public class RegistrationBean {
 
 	public void setRestaurants(List<Restaurant> restaurants) {
 		this.restaurants = restaurants;
+	}
+	
+	public List<Menu> getMenus() {
+		List<Menu> menus = this.manager.getMenus(restaurant);
+		return menus;
+	}
+
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
 	}
 
 	public void setLastname(String lastname) {
