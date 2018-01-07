@@ -263,7 +263,7 @@ public class RegistrationBean {
 	}
 	
 	public List<Restaurant> getRestaurants() {
-		List<Restaurant> restaurants = this.manager.getRestaurants();
+		this.restaurants = this.manager.getRestaurants();
 		List<Restaurant> ownersRestaurants = new ArrayList<>(); 
 		for (Restaurant restaurant : restaurants) {
 			if(restaurant.getOwner().getId().equals(this.owner.getId())) {
