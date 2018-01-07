@@ -267,7 +267,7 @@ public class RegistrationBean {
 		for (Restaurant restaurant : restaurants) {
 			if(restaurant.getOwner().getId() == this.owner.getId()) {
 				ownersRestaurants.add(restaurant);
-				restaurants.add(restaurant);
+				//restaurants.add(restaurant);
 			}
 		}
 		return ownersRestaurants;
