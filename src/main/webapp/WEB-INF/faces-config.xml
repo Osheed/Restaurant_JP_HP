@@ -27,7 +27,7 @@
 		<display-name>welcomePage.xhtml</display-name>
 		<from-view-id>/welcomePage.xhtml</from-view-id>
 		<navigation-case>
-		<display-name>manageData.xhtml</display-name>
+		<from-outcome>manageData.xhtml</from-outcome>
 			<to-view-id>/manageData.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -35,7 +35,7 @@
 		<display-name>manageData.xhtml</display-name>
 		<from-view-id>/manageData.xhtml</from-view-id>
 		<navigation-case>
-		<display-name>addRestaurant.xhtml</display-name>
+		<from-outcome>addRestaurant.xhtml</from-outcome>
 			<to-view-id>/addRestaurant.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -43,7 +43,7 @@
 		<display-name>manageData.xhtml</display-name>
 		<from-view-id>/manageData.xhtml</from-view-id>
 		<navigation-case>
-			<display-name>manageMenus.xhtml</display-name>
+			<from-outcome>manageMenus.xhtml</from-outcome>
 			<to-view-id>/manageMenus.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -51,7 +51,7 @@
 		<display-name>manageData.xhtml</display-name>
 		<from-view-id>/manageData.xhtml</from-view-id>
 		<navigation-case>
-		<display-name>welcomePage.xhtml</display-name>
+		<from-outcome>welcomePage.xhtml</from-outcome>
 			<to-view-id>/welcomePage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -59,7 +59,7 @@
 		<display-name>register.xhtml</display-name>
 		<from-view-id>/register.xhtml</from-view-id>
 		<navigation-case>
-		<display-name>welcomePage.xhtml</display-name>
+		<from-outcome>welcomePage.xhtml</from-outcome>
 			<to-view-id>/welcomePage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -67,7 +67,7 @@
 		<display-name>addRestaurant.xhtml</display-name>
 		<from-view-id>/addRestaurant.xhtml</from-view-id>
 		<navigation-case>
-		<display-name>manageData.xhtml</display-name>
+		<from-outcome>manageData.xhtml</from-outcome>
 			<to-view-id>/manageData.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -75,8 +75,25 @@
 		<display-name>manageMenus.xhtml</display-name>
 		<from-view-id>/manageMenus.xhtml</from-view-id>
 		<navigation-case>
-		<display-name>manageData.xhtml</display-name>
+		<from-outcome>manageData.xhtml</from-outcome>
 			<to-view-id>/manageData.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>manageMenus.xhtml</display-name>
+		<from-view-id>/manageMenus.xhtml</from-view-id>
+		<navigation-case>
+		<from-outcome>addMenu.xhtml</from-outcome>
+			<to-view-id>/addMenu.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>addMenu.xhtml</display-name>
+		<from-view-id>/addMenu.xhtml</from-view-id>
+		<navigation-case>
+		<from-outcome>manageMenus.xhtml</from-outcome>
+			<to-view-id>/manageMenus.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>
