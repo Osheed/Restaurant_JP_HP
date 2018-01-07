@@ -9,11 +9,6 @@
 		<managed-bean-class>managedbeans.RegistrationBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-    <managed-bean>
-    	<managed-bean-name>ratingBean</managed-bean-name>
-    	<managed-bean-class>managedbeans.RatingBean</managed-bean-class>
-    	<managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
 	<application>
         <resource-bundle>
             <base-name>managedbeans.messages</base-name>

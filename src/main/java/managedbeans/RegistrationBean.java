@@ -107,7 +107,22 @@ public class RegistrationBean {
 		return this.navigateTo;
 	}
 	
-	//TODO: test for owner/DuplicatedValues(name-address)
+	public String logout(){
+		this.owner = null;
+		this.restaurant = null;
+		//resetValueMenuNull();
+		//resetValueNull();
+		return "welcomePage";
+	}
+	
+	public Boolean isRestaurantInDB(){
+		
+		
+		return null;
+		
+	}
+	
+	//TODO: test for owner/DuplicatedValues(name-address)/and no restaurant dont show addmenu
 	public String registerNewRestaurant(){
 		
 		manager.registerRestaurant(addressR, countryR, nameR, postcodeR, this.owner);
@@ -281,6 +296,14 @@ public class RegistrationBean {
 
 	public void setPostcodeR(int postcodeR) {
 		this.postcodeR = postcodeR;
+	}
+
+	public IManagement getManager() {
+		return manager;
+	}
+
+	public void setManager(IManagement manager) {
+		this.manager = manager;
 	}
 	
 	
