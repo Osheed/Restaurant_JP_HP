@@ -96,10 +96,14 @@ public class RegistrationBean {
 				navigateTo = "welcomePage";
 			}
 			else {
-				this.owner = ownerTemp;
+				owner = ownerTemp;
 				navigateTo = "manageData";
 				System.out.println( "In the login method i have "+owner.getFirstname()+" "+owner.getLastname());
 				ownerTitleLabel = "Welcome "+owner.getFirstname()+" "+owner.getLastname();
+				lastname = owner.getLastname();
+				firstname = owner.getFirstname();
+				phone = owner.getFirstname();
+				email= owner.getFirstname();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -304,6 +308,14 @@ public class RegistrationBean {
 
 	public void setManager(IManagement manager) {
 		this.manager = manager;
+	}
+
+	public Owner getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Owner owner) {
+		this.owner = owner;
 	}
 	
 	

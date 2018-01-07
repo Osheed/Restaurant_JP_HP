@@ -47,4 +47,36 @@
 			<to-view-id>/manageMenus.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>manageData.xhtml</display-name>
+		<from-view-id>/manageData.xhtml</from-view-id>
+		<navigation-case>
+		<display-name>welcomePage.xhtml</display-name>
+			<to-view-id>/welcomePage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>register.xhtml</display-name>
+		<from-view-id>/register.xhtml</from-view-id>
+		<navigation-case>
+		<display-name>welcomePage.xhtml</display-name>
+			<to-view-id>/welcomePage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>addRestaurant.xhtml</display-name>
+		<from-view-id>/addRestaurant.xhtml</from-view-id>
+		<navigation-case>
+		<display-name>manageData.xhtml</display-name>
+			<to-view-id>/manageData.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>manageMenus.xhtml</display-name>
+		<from-view-id>/manageMenus.xhtml</from-view-id>
+		<navigation-case>
+		<display-name>manageData.xhtml</display-name>
+			<to-view-id>/manageData.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

@@ -13,16 +13,16 @@
 		        <h:outputLabel style="font-weight:bold; margin-left:80px" value="#{registrationBean.ownerTitleLabel}"></h:outputLabel>			
 				<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="2" layout="grid">
 					<h:outputText value="#{messages.lastnameLabel}" />
-					<h:outputText value="#{registrationBean.lastname}"></h:outputText>
+					<h:outputText value="#{registrationBean.owner.lastname}"></h:outputText>
 					
 					<h:outputText value="#{messages.firstnameLabel}" />
-					<h:outputText value="#{registrationBean.firstname}"></h:outputText>
+					<h:outputText value="#{registrationBean.owner.firstname}"></h:outputText>
 	
 					<h:outputText value="#{messages.phoneLabel}" />
-					<h:outputText value="#{registrationBean.phone}"></h:outputText>
+					<h:outputText value="#{registrationBean.owner.phone}"></h:outputText>
 	
 					<h:outputText value="#{messages.emailLabel}" />
-					<h:outputText value="#{registrationBean.email}"></h:outputText>
+					<h:outputText value="#{registrationBean.owner.email}"></h:outputText>
 			    </h:panelGrid>
 				<br></br>
 				<table style="border: 1px solid black; border-collapse: collapse; margin:15px 0 0 0;">
@@ -41,15 +41,13 @@
 							<td style="border: 1px solid black;padding: 8px;">#{field.address}</td>
 							<td style="border: 1px solid black;padding: 8px;">#{field.postcode}</td>
 							<td style="border: 1px solid black;padding: 8px;">#{field.country}</td>
-							<td>
-								<h:commandButton action="manageMenus" value="details" />
-							</td>
 						</tr>
 					</ui:repeat>
 				</table>
 				<br></br>
-				<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="3" layout="grid">
+				<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="4" layout="grid">
 					<h:commandButton action="addRestaurant" value="add Restaurant" />
+					<h:commandButton action="manageMenus" value="details" />
 					<h:commandButton action="#{registrationBean.logout}" value="#{messages.logoutBtn}" />
 					<h:commandButton action="manageData" value="#{messages.backBtn}" />
 				</h:panelGrid>
