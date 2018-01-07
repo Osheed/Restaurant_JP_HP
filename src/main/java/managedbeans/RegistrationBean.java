@@ -50,6 +50,11 @@ public class RegistrationBean {
 	private String nameR;
 	private int postcodeR;
 	
+	//Data for Menu
+	private String nameM;
+	private String descriptionM;
+	private float priceM;
+		
 	//Informations
 	private String loginInformation="";
 	private String registerInformation="";
@@ -119,11 +124,12 @@ public class RegistrationBean {
 		return "welcomePage";
 	}
 	
+	
+	/*
+	 * Managing the Restaurants
+	 */
 	public Boolean isRestaurantInDB(){
-		
-		
 		return null;
-		
 	}
 	
 	//TODO: test for owner/DuplicatedValues(name-address)/and no restaurant dont show addmenu
@@ -141,7 +147,6 @@ public class RegistrationBean {
 		return false;
 	}
 	
-
 	public String editRestaurant(Restaurant r){
 		this.restaurant = r;
 
@@ -160,6 +165,51 @@ public class RegistrationBean {
 		return null;
 	}
 	
+	/*
+	 * Managing the Menus
+	 */
+	public String saveMenu(){
+		// get data
+		if (menu != null) {
+			manager.updateMenu(menu, this.nameM, this.descriptionM, this.priceM);
+			resetValueMenuNull();
+		}else{
+			manager.addMenu(this.nameM,this.descriptionM, this.priceM, restaurant);
+			resetValueMenuNull();
+		}
+
+		navigateTo = "manageMenus";
+		return navigateTo;
+	}
+
+	public String editMenu(Menu m){
+		// specific menu selected in the list or user wants to add new menu
+		this.menu = m;
+
+		// set data on variables of the menu to display
+		this.nameM = m.getName();
+		this.descriptionM = m.getDescription();
+		this.priceM = m.getPrice();
+
+		navigateTo = "addMenu";
+		return navigateTo;
+	}
+	
+	public String removeMenu(Menu m){
+		this.manager.removeMenu(m.getId());
+		return null;
+	}
+
+	private void resetValueMenuNull(){
+		this.nameM = "";
+		this.descriptionM = "";
+		this.priceM = 0f;
+		this.menu = null;
+		this.loginInformation = "";
+	}
+	
+	
+	
     
     /*
      * NavigationRule: Method to navigate 
@@ -170,6 +220,12 @@ public class RegistrationBean {
     
 	public void setNavigateTo(String navigateTo) {
 		this.navigateTo = navigateTo;
+	}
+	
+	public String cancel(){
+		// delete data from variables
+		resetValueMenuNull();
+		return navigateTo = "manageMenus";
 	}
 	
 	/*
@@ -318,5 +374,27 @@ public class RegistrationBean {
 		this.owner = owner;
 	}
 	
-	
+	public String getNameM() {
+		return nameM;
+	}
+
+	public void setNameM(String nameM) {
+		this.nameM = nameM;
+	}
+
+	public String getDescriptionM() {
+		return descriptionM;
+	}
+
+	public void setDescriptionM(String descriptionM) {
+		this.descriptionM = descriptionM;
+	}
+
+	public float getPriceM() {
+		return priceM;
+	}
+
+	public void setPriceM(float priceM) {
+		this.priceM = priceM;
+	}
 }

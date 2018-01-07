@@ -24,15 +24,15 @@
 							<td style="border: 1px solid black;padding: 5px;">#{field.name}</td>
 							<td style="border: 1px solid black;padding: 8px;">#{field.description}</td>
 							<td style="border: 1px solid black;padding: 8px;">#{field.price}</td>
-							<td><h:commandButton action="#{registrationTransferBean.removeMenu(field)}" value="#{messages.removeBtn}" /></td>
-							<td><h:commandButton action="#{registrationTransferBean.editMenu(field)}" value="#{messages.editBtn}" /></td>
+							<td><h:commandButton action="#{registrationBean.removeMenu(field)}" value="#{messages.removeBtn}" /></td>
+							<td><h:commandButton action="#{registrationBean.editMenu(field)}" value="#{messages.editBtn}" /></td>
 						</tr>
 					</ui:repeat>
 				</table>
 				<br></br>
 				<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="3" layout="grid">
 					<h:commandButton action="addMenu" value="#{messages.addMenuBtn}" />
-					<h:commandButton action="#{registrationTransferBean.logout}" value="#{messages.logoutBtn}" />
+					<h:commandButton action="#{registrationBean.logout}" value="#{messages.logoutBtn}" />
 					<h:commandButton action="manageData" value="#{messages.backBtn}" />
 				</h:panelGrid>
 			</h:form>

@@ -13,17 +13,17 @@
 				<h:outputLabel style="font-weight:bold; margin-left:80px" value="#{messages.addMenuTitleLabel}"></h:outputLabel>
 				<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="2" layout="grid">
 					<h:outputText value="#{messages.nameMenuLabel}" />
-					<h:inputText value="#{registrationTransferBean.name_menu}"></h:inputText>
+					<h:inputText value="#{registrationBean.nameM}"></h:inputText>
 	
 					<h:outputText value="#{messages.descMenuLabel}" />
-					<h:inputText value="#{registrationTransferBean.description}"></h:inputText>
+					<h:inputText value="#{registrationBean.descriptionM}"></h:inputText>
 	
 					<h:outputText value="#{messages.priceMenuLabel}" />
-					<h:inputText value="#{registrationTransferBean.price}"></h:inputText>
+					<h:inputText value="#{registrationBean.priceM}"></h:inputText>
 	
-					<h:commandButton action="#{registrationTransferBean.saveMenu}" value="#{messages.saveBtn}" />
+					<h:commandButton action="#{registrationBean.saveMenu}" value="#{messages.saveBtn}" />
 	
-					<h:commandButton action="#{registrationTransferBean.cancel}" value="#{messages.cancelBtn}" />
+					<h:commandButton action="#{registrationBean.cancel}" value="#{messages.cancelBtn}" />
 				</h:panelGrid>
 				<br></br>
 			</h:form>
