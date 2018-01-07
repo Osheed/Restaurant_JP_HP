@@ -17,7 +17,6 @@ public class RegistrationBean {
 
 	private IManagement manager;
 	private IRating iregistration;
-	private List<String> restaurantNames;
 	private List<Restaurant> restaurants;
 	private List<Menu> menus;
 	
@@ -30,7 +29,6 @@ public class RegistrationBean {
 	//Objects
 	private Owner owner;
 	private Menu menu;
-	private Rating rating;
 	private Restaurant restaurant;
 	
 	//Data for new User
@@ -68,14 +66,7 @@ public class RegistrationBean {
 		InitialContext ctx = new InitialContext();
 		manager = (IManagement) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/RestaurantManagementBean!restaurantService.IManagement");
 		
-		//get restaurants
-		List<Restaurant> restaurantList = manager.getRestaurants();
-		
-		this.restaurantNames = new ArrayList<String>();
-		for(Restaurant rest : restaurantList) {
-			this.restaurantNames.add(rest.getName_restaurant());
-		}
-		
+		restaurants = new ArrayList<Restaurant>();
 		System.out.println("Test initialise in RegistrationBean,Test initialise in RegistrationBean");
 		
 	}
@@ -132,6 +123,7 @@ public class RegistrationBean {
 	 * Managing the Restaurants
 	 */
 	public Boolean isRestaurantInDB(){
+		System.out.println("Is Restaurant in the DB size : "+restaurants.size());
 		if(restaurants.size() == 0){
 			System.out.println("The size of the Restaurants in DB : "+restaurants.size());
 			manageDataInformation = "You need to Add a Restaurant before";
@@ -224,7 +216,7 @@ public class RegistrationBean {
 		this.menu = null;
 		this.loginInformation = "";
 	}	
-    
+    //TODO: test this sysout because nullPointerException
 	public String details(){
 		System.out.println("value of is RestaurantinDB() : "+isRestaurantInDB());
 		if(isRestaurantInDB()){
@@ -267,6 +259,7 @@ public class RegistrationBean {
 		for (Restaurant restaurant : restaurants) {
 			if(restaurant.getOwner().getId() == this.owner.getId()) {
 				ownersRestaurants.add(restaurant);
+				restaurants.add(restaurant);
 			}
 		}
 		return ownersRestaurants;
