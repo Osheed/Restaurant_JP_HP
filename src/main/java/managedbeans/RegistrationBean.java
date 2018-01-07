@@ -89,7 +89,6 @@ public class RegistrationBean {
 		return navigateTo;
 	}
 	
-	
 	public String login(){
 		try {
 			if (isEmptyLoginData()) {
@@ -144,10 +143,11 @@ public class RegistrationBean {
 	
 	//TODO: test for owner/DuplicatedValues(name-address)/and no restaurant dont show addmenu
 	public String registerNewRestaurant(){
-		
 		manager.registerRestaurant(addressR, countryR, nameR, postcodeR, this.owner);
 		newRestaurantInformation = "New Restaurant Successfully Created ";
 		navigateTo = "manageData";
+		
+		resetValueRestaurantNull();
 		
 		return navigateTo;
 	}
@@ -174,6 +174,13 @@ public class RegistrationBean {
 		this.manager.removeRestaurant(r.getId());
 		return null;
 	}
+	
+	private void resetValueRestaurantNull(){
+		this.nameR = "";
+		this.addressR = "";
+		this.postcodeR = 0;
+		this.countryR = "";
+	}	
 	
 	/*
 	 * Managing the Menus
@@ -209,17 +216,14 @@ public class RegistrationBean {
 		this.manager.removeMenu(m.getId());
 		return null;
 	}
-
+	
 	private void resetValueMenuNull(){
 		this.nameM = "";
 		this.descriptionM = "";
 		this.priceM = 0f;
 		this.menu = null;
 		this.loginInformation = "";
-	}
-	
-	
-	
+	}	
     
     /*
      * NavigationRule: Method to navigate 
