@@ -109,6 +109,7 @@ public class RegistrationBean {
 				firstname = owner.getFirstname();
 				phone = owner.getFirstname();
 				email= owner.getFirstname();
+				restaurants = getRestaurants();
 				isRestaurantInDB();
 			}
 		} catch (Exception e) {
@@ -148,7 +149,7 @@ public class RegistrationBean {
 		navigateTo = "manageData";
 		
 		resetValueRestaurantNull();
-		
+		restaurants.clear();
 		return navigateTo;
 	}
 	
@@ -265,9 +266,9 @@ public class RegistrationBean {
 		List<Restaurant> restaurants = this.manager.getRestaurants();
 		List<Restaurant> ownersRestaurants = new ArrayList<>(); 
 		for (Restaurant restaurant : restaurants) {
-			if(restaurant.getOwner().getId() == this.owner.getId()) {
+			if(restaurant.getOwner().getId().equals(this.owner.getId())) {
 				ownersRestaurants.add(restaurant);
-				restaurants.add(restaurant);
+				//restaurants.add(restaurant);
 			}
 		}
 		return ownersRestaurants;
