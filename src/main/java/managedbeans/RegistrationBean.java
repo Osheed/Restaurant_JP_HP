@@ -86,7 +86,15 @@ public class RegistrationBean {
 		loginInformation = "You are Register Successfully - Enter your credentials";	
 		navigateTo = "welcomePage";
 
+		cleanRegistrationForm();
 		return navigateTo;
+	}
+	
+	public void cleanRegistrationForm() {
+		this.lastname = "";
+		this.firstname = "";
+		this.phone = "";
+		this.email = "";
 	}
 	
 	public String login(){
