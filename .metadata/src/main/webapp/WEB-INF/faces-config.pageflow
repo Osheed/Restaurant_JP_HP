@@ -4,8 +4,8 @@
   <nodes xsi:type="pageflow:PFPage" name="register.xhtml" x="600" y="36" id="pf15151542895412" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf15153363260361" inlinks="pf15151542895411" path="/register.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="manageData.xhtml" x="156" y="300" id="pf15151843508301" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" outlinks="pf15151843508302 pf15152628614510 pf15153363260360" inlinks="pf15151843508300 pf15153363260362 pf15153363260363" path="/manageData.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="addRestaurant.xhtml" x="12" y="509" id="pf15151843508303" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf15153363260362" inlinks="pf15151843508302" path="/addRestaurant.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="manageMenus.xhtml" x="384" y="504" id="pf15152628614511" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf15153363260363 pf15153399395715" inlinks="pf15152628614510 pf15153399395716" path="/manageMenus.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="addMenu.xhtml" x="642" y="454" id="pf15153399272144" outlinks="pf15153399395716" inlinks="pf15153399395715" path="/addMenu.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="manageMenus.xhtml" x="384" y="504" id="pf15152628614511" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf15153363260363 pf15153399395715" inlinks="pf15152628614510 pf15153399395716" path="/manageMenus.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="addMenu.xhtml" x="564" y="348" id="pf15153399272144" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf15153399395716" inlinks="pf15153399395715" path="/addMenu.xhtml"/>
   <links id="pf15151542895411" target="pf15151542895412" source="pf15151541199950" outcome="register">
     <bendPoints d1Width="238" d1Height="107" d2Width="-225" d2Height="83"/>
   </links>
@@ -28,6 +28,8 @@
   <links id="pf15153363260363" target="pf15151843508301" source="pf15152628614511" outcome="manageData.xhtml">
     <bendPoints d1Width="-55" d1Height="-124" d2Width="179" d2Height="80"/>
   </links>
-  <links id="pf15153399395715" target="pf15153399272144" source="pf15152628614511" outcome="addMenu.xhtml"/>
+  <links id="pf15153399395715" target="pf15153399272144" source="pf15152628614511" outcome="addMenu.xhtml">
+    <bendPoints d1Width="155" d1Height="-23" d2Width="-11" d2Height="133"/>
+  </links>
   <links id="pf15153399395716" target="pf15152628614511" source="pf15153399272144" outcome="manageMenus.xhtml"/>
 </pageflow:Pageflow>
