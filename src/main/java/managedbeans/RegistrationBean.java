@@ -60,6 +60,7 @@ public class RegistrationBean {
 	private String loginInformation="";
 	private String registerInformation="";
 	private String newRestaurantInformation="";
+	private String manageDataInformation="";
 	
 	@PostConstruct
 	public void initialize() throws NamingException {
@@ -110,6 +111,7 @@ public class RegistrationBean {
 				firstname = owner.getFirstname();
 				phone = owner.getFirstname();
 				email= owner.getFirstname();
+				isRestaurantInDB();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,6 +122,7 @@ public class RegistrationBean {
 	public String logout(){
 		this.owner = null;
 		this.restaurant = null;
+		this.restaurants = null;
 		//resetValueMenuNull();
 		//resetValueNull();
 		return "welcomePage";
@@ -130,7 +133,13 @@ public class RegistrationBean {
 	 * Managing the Restaurants
 	 */
 	public Boolean isRestaurantInDB(){
-		return null;
+		if(restaurants.size() == 0){
+			System.out.println("The size of the Restaurants in DB : "+restaurants.size());
+			manageDataInformation = "You need to Add a Restaurant before";
+			return false;
+		}
+		manageDataInformation = "";
+		return true;
 	}
 	
 	//TODO: test for owner/DuplicatedValues(name-address)/and no restaurant dont show addmenu
@@ -415,6 +424,14 @@ public class RegistrationBean {
 
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
+	}
+
+	public String getManageDataInformation() {
+		return manageDataInformation;
+	}
+
+	public void setManageDataInformation(String manageDataInformation) {
+		this.manageDataInformation = manageDataInformation;
 	}
 	
 	
