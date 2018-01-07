@@ -408,4 +408,14 @@ public class RegistrationBean {
 	public void setPriceM(float priceM) {
 		this.priceM = priceM;
 	}
+
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+	
+	
 }

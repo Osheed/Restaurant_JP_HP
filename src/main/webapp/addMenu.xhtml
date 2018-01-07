@@ -20,6 +20,11 @@
 	
 					<h:outputText value="#{messages.priceMenuLabel}" />
 					<h:inputText value="#{registrationBean.priceM}"></h:inputText>
+					
+					<h:outputText value="Restaurant: "></h:outputText>
+		        	<h:selectOneMenu value="#{registrationBean.restaurant}">
+		        		<f:selectItems value="#{registrationBean.restaurants}"/>
+		        	</h:selectOneMenu>
 	
 					<h:commandButton action="#{registrationBean.saveMenu}" value="#{messages.saveBtn}" />
 	
