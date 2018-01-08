@@ -43,14 +43,6 @@
 		<display-name>manageData.xhtml</display-name>
 		<from-view-id>/manageData.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>manageMenus.xhtml</from-outcome>
-			<to-view-id>/manageMenus.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<display-name>manageData.xhtml</display-name>
-		<from-view-id>/manageData.xhtml</from-view-id>
-		<navigation-case>
 		<from-outcome>welcomePage.xhtml</from-outcome>
 			<to-view-id>/welcomePage.xhtml</to-view-id>
 		</navigation-case>

@@ -71,13 +71,35 @@ public class RegistrationBean {
 		
 	}
 	
-	//TODO: Tests for EmptyValues/DuplicatedValues(email)/NoSamePassword-
+	
 	public String registration(){
-		manager.registerOwner(this.lastname, this.firstname, this.password, this.phone, this.email);
-		loginInformation = "You are Register Successfully - Enter your credentials";	
-		navigateTo = "welcomePage";
-
-		cleanRegistrationForm();
+		try{
+			if(registrationEmptyValues()){
+				registerInformation = "Please insert all field to register";
+				navigateTo = "register";
+				return navigateTo;
+			}
+			if(!password.equals(confirmPassword)){
+				registerInformation = "Both passwords must be the same";
+				navigateTo ="register";
+				return navigateTo;
+			}
+			if(duplicateEmail()){
+				registerInformation ="Another user uses this email";
+				email = "";
+				navigateTo = "register";
+				return navigateTo;
+			}else{
+				manager.registerOwner(this.lastname, this.firstname, this.password, this.phone, this.email);
+				loginInformation = "You are Register Successfully - Enter your credentials";	
+				navigateTo = "welcomePage";
+				cleanRegistrationForm();
+			}
+		}
+		catch(Exception e){
+			System.out.println("Registration Bean - Registration failed");
+			e.printStackTrace();
+		}
 		return navigateTo;
 	}
 	
@@ -86,6 +108,30 @@ public class RegistrationBean {
 		this.firstname = "";
 		this.phone = "";
 		this.email = "";
+	}
+	public boolean registrationEmptyValues(){
+		List<String> values = new ArrayList<String>();
+		values.add(this.email);
+		values.add(this.firstname);
+		values.add(this.lastname);
+		values.add(this.password);
+		values.add(this.confirmPassword);
+		values.add(this.phone);
+		
+		for(String value: values){
+			if(value.isEmpty() || value.trim().equals("")||value.contains(" ")){
+				System.out.println("il y a dans values : "+value +".");
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean duplicateEmail(){
+		Owner check = manager.getOwner(email);
+		System.out.println("Methodd duplicateEmail : Value for check : "+check+".");
+		if(check!=null)return true;
+		return false;
+		
 	}
 	
 	public String login(){

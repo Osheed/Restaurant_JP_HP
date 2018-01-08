@@ -43,6 +43,8 @@ public class RestaurantManagementBean implements IManagement {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	@Override
 	public Owner login(String email, String password) {
 		try {
