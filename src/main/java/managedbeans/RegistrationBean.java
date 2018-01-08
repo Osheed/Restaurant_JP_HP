@@ -208,12 +208,33 @@ public class RegistrationBean {
 		return true;
 	}
 	public Boolean isMenuInDB(){
-		if(menus.size() == 0){
+		System.out.println("In isMenuInDB i have in menu : "+menus.size() +".");
+		List check = manager.getMenus(restaurants.get(0));
+		if(check.size() == 0){
 			manageMenuInformation = "You need to Add a Menu to see this list";
 			return false;
 		}
 		return true;
 	}
+	public String details(){
+			System.out.println("value of is RestaurantinDB() : "+isRestaurantInDB());
+			if(isRestaurantInDB()){
+				System.out.println(" is Restaurant in DB !!!!!!!!!!!!!!!!!!!");
+				if(isMenuInDB()){
+					navigateTo ="manageMenus";
+					System.out.println(" is Menu in DB !!!!!!!!!!!!!!!!!!!!!!!");
+				}
+			}
+			else{
+				navigateTo = "manageData";
+			}
+			return navigateTo;
+			
+		}
+	/* Owner check = manager.getOwner(email);
+		System.out.println("Methodd duplicateEmail : Value for check : "+check+".");
+		if(check!=null)return true;
+		return false; */
 	
 	public String addRestaurantPage() {
 		this.restaurant = null;
@@ -311,18 +332,7 @@ public class RegistrationBean {
 		this.menu = null;
 		this.loginInformation = "";
 	}	
-    //TODO: test this sysout because nullPointerException
-	public String details(){
-		System.out.println("value of is RestaurantinDB() : "+isRestaurantInDB());
-		if(isRestaurantInDB()){
-			if(isMenuInDB()) navigateTo ="manageMenus";
-			navigateTo = "manageMenus";
-		}
-		else{
-			navigateTo = "manageData";
-		}
-		return navigateTo;
-	}
+   
 	
     /*
      * NavigationRule: Method to navigate 
@@ -376,6 +386,7 @@ public class RegistrationBean {
 		for(Menu menu : menus){
 			if(menu.getRestaurant().getId().equals(this.restaurant.getId())){
 				restaurantsMenu.add(menu);
+				
 			}
 		}
 		return restaurantsMenu;
