@@ -2,11 +2,13 @@ package restaurantService;
 
 import java.util.List;
 
+import javax.ejb.Local;
+
 import businessobject.Menu;
 import businessobject.Owner;
 import businessobject.Restaurant;
 
-
+@Local
 public interface IManagement {
 
 	//For the Owner
