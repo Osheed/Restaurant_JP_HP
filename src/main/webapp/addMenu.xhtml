@@ -22,8 +22,8 @@
 					<h:inputText value="#{registrationBean.priceM}"></h:inputText>
 					
 					<h:outputText value="Restaurant: "></h:outputText>
-		        	<h:selectOneMenu value="#{registrationBean.restaurant}">
-		        		<f:selectItems value="#{registrationBean.restaurants}"/>
+		        	<h:selectOneMenu value="#{registrationBean.sourceRestaurantName}" valueChangeListener="#{registrationBean.updateRestaurants}" onchange="submit()">
+		        		<f:selectItems value="#{registrationBean.restaurantNames}"/>
 		        	</h:selectOneMenu>
 	
 					<h:commandButton action="#{registrationBean.saveMenu}" value="#{messages.saveBtn}" />
