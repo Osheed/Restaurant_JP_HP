@@ -5,11 +5,8 @@ import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,14 +38,11 @@ public class Restaurant {
 	@OneToMany (mappedBy = "restaurant", cascade = CascadeType.ALL)
 	List<Menu> menus;
 	
-	// add relations : FetchType Lazy by default
-	@OneToMany (mappedBy = "restaurant", cascade = CascadeType.ALL)
-	List<Rating> ratings;
+
 
 	//constructors
 	public Restaurant(){
 		this.menus = new ArrayList<Menu>();
-		this.ratings = new ArrayList<Rating>();
 	}
 
 	public Restaurant(String name_restaurant, String address, int postcode, String country, Owner owner) {
@@ -59,8 +53,7 @@ public class Restaurant {
 		this.country = country;
 		this.owner = owner;
 		this.menus = new ArrayList<Menu>();
-		this.ratings = new ArrayList<Rating>();
-	}
+		}
 
 	public Restaurant(String name_restaurant, String address, int postcode, String country) {
 		this.name_restaurant = name_restaurant;
@@ -68,7 +61,7 @@ public class Restaurant {
 		this.postcode = postcode;
 		this.country = country;
 		this.menus = new ArrayList<Menu>();
-		this.ratings = new ArrayList<Rating>();
+
 	}
 	
 	//add objects to lists
@@ -77,10 +70,7 @@ public class Restaurant {
 		this.menus.add(menu);
 	}
 	
-	public void addRating(Rating rating){
-		rating.setRestaurant(this);
-		this.ratings.add(rating);
-	}
+
 	
 	//getters and setters
 	public Long getId() {
@@ -134,7 +124,7 @@ public class Restaurant {
 	@Override
 	public String toString() {
 		return "Restaurant [id=" + id + ", name_restaurant=" + name_restaurant + ", address=" + address + ", postcode="
-				+ postcode + ", country=" + country + ", owner=" + owner + ", menus=" + menus + ", ratings=" + ratings
+				+ postcode + ", country=" + country + ", owner=" + owner + ", menus=" + menus 
 				+ "]";
 	}
 }

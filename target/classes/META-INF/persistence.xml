@@ -9,7 +9,6 @@
 		<class>businessobject.Owner</class>
 		<class>businessobject.Restaurant</class>
 		<class>businessobject.Menu</class>
-		<class>businessobject.Rating</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" /> 
