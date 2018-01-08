@@ -319,6 +319,11 @@ public class RegistrationBean {
 		return navigateTo = "manageMenus";
 	}
 	
+	public String returnRegister(){
+		navigateTo = "welcomePage";
+		return navigateTo;
+	}
+	
 	/*
 	 * Getters & Setters
 	 */
