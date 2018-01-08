@@ -3,6 +3,7 @@ package managedbeans;
 import java.util.List;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
+import javax.faces.event.ValueChangeEvent;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -25,11 +26,13 @@ public class RegistrationBean {
 	
 	//ManageData
 	private String ownerTitleLabel;
+	private List<String> restaurantNames;
 	
 	//Objects
 	private Owner owner;
 	private Menu menu;
 	private Restaurant restaurant;
+	private String sourceRestaurantName;
 	
 	//Data for new User
 	private String lastname;
@@ -66,10 +69,26 @@ public class RegistrationBean {
 		InitialContext ctx = new InitialContext();
 		manager = (IManagement) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/RestaurantManagementBean!restaurantService.IManagement");
 		
+		// get restaurants
+		List<Restaurant> restaurantList = manager.getRestaurants();
+		this.restaurantNames = new ArrayList<String>();
+		for (Restaurant r : restaurantList) {
+			this.restaurantNames.add(r.getName_restaurant());
+		}
+		
 		restaurants = new ArrayList<Restaurant>();
 		System.out.println("Test initialise in RegistrationBean,Test initialise in RegistrationBean");
-		
 	}
+	
+	public void updateRestaurants(ValueChangeEvent event) {
+		this.sourceRestaurantName = (String)event.getNewValue();
+    	
+	    List<Restaurant> rest = getRestaurants();
+	    this.restaurantNames = new ArrayList<String>();
+		for (Restaurant r : rest) {
+			this.restaurantNames.add(r.getName_restaurant());
+		}
+    }
 	
 	//TODO: Tests for EmptyValues/DuplicatedValues(email)/NoSamePassword-
 	public String registration(){
@@ -455,6 +474,22 @@ public class RegistrationBean {
 
 	public void setManageDataInformation(String manageDataInformation) {
 		this.manageDataInformation = manageDataInformation;
+	}
+
+	public List<String> getRestaurantNames() {
+		return restaurantNames;
+	}
+
+	public void setRestaurantNames(List<String> restaurantNames) {
+		this.restaurantNames = restaurantNames;
+	}
+
+	public String getSourceRestaurantName() {
+		return sourceRestaurantName;
+	}
+
+	public void setSourceRestaurantName(String sourceRestaurantName) {
+		this.sourceRestaurantName = sourceRestaurantName;
 	}
 	
 	
