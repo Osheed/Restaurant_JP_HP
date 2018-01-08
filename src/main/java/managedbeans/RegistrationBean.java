@@ -62,6 +62,7 @@ public class RegistrationBean {
 	private String registerInformation="";
 	private String newRestaurantInformation="";
 	private String manageDataInformation="";
+	private String manageMenuInformation="";
 	
 	@PostConstruct
 	public void initialize() throws NamingException {
@@ -200,10 +201,17 @@ public class RegistrationBean {
 		System.out.println("Is Restaurant in the DB size : "+restaurants.size());
 		if(restaurants.size() == 0){
 			System.out.println("The size of the Restaurants in DB : "+restaurants.size());
-			manageDataInformation = "You need to Add a Restaurant before";
+			manageDataInformation = "You need to Add a Restaurant to see this list";
 			return false;
 		}
 		manageDataInformation = "";
+		return true;
+	}
+	public Boolean isMenuInDB(){
+		if(menus.size() == 0){
+			manageMenuInformation = "You need to Add a Menu to see this list";
+			return false;
+		}
 		return true;
 	}
 	
@@ -214,7 +222,7 @@ public class RegistrationBean {
 		navigateTo = "manageData";
 		
 		resetValueRestaurantNull();
-		restaurants.clear();
+		//restaurants.clear();
 		return navigateTo;
 	}
 	
@@ -259,6 +267,7 @@ public class RegistrationBean {
 		}else{
 			manager.addMenu(this.nameM,this.descriptionM, this.priceM, restaurant);
 			resetValueMenuNull();
+			menus = getMenus();
 		}
 
 		navigateTo = "manageMenus";
@@ -294,6 +303,7 @@ public class RegistrationBean {
 	public String details(){
 		System.out.println("value of is RestaurantinDB() : "+isRestaurantInDB());
 		if(isRestaurantInDB()){
+			if(isMenuInDB()) navigateTo ="manageMenus";
 			navigateTo = "manageMenus";
 		}
 		else{
@@ -547,6 +557,14 @@ public class RegistrationBean {
 
 	public void setSourceRestaurantName(String sourceRestaurantName) {
 		this.sourceRestaurantName = sourceRestaurantName;
+	}
+
+	public String getManageMenuInformation() {
+		return manageMenuInformation;
+	}
+
+	public void setManageMenuInformation(String manageMenuInformation) {
+		this.manageMenuInformation = manageMenuInformation;
 	}
 	
 	

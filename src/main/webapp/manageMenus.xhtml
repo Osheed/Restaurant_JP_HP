@@ -37,6 +37,7 @@
 					<h:commandButton action="#{registrationBean.logout}" value="#{messages.logoutBtn}" />
 					<h:commandButton action="manageData" value="#{messages.backBtn}" />
 				</h:panelGrid>
+				<h:outputText style="color:red;" value="#{registrationBean.manageMenuInformation}" />
 			</h:form>
 		</ui:define>
 	</ui:composition>
