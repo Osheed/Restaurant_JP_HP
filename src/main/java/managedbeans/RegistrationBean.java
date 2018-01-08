@@ -215,10 +215,16 @@ public class RegistrationBean {
 		return true;
 	}
 	
+	public String addRestaurantPage() {
+		this.restaurant = null;
+		navigateTo = "addRestaurant";
+		return navigateTo;
+	}
+	
 	//TODO: test for owner/DuplicatedValues(name-address)/and no restaurant dont show addmenu
 	public String registerNewRestaurant(){
-		if(restaurant != null) {
-			manager.updateRestaurant(restaurant, this.nameR, this.addressR, this.postcodeR, this.countryR);
+		if(this.restaurant != null) {
+			manager.updateRestaurant(this.restaurant, this.nameR, this.addressR, this.postcodeR, this.countryR);
 			newRestaurantInformation = "Restaurant Successfully Updated";
 			resetValueRestaurantNull();
 		} else {
