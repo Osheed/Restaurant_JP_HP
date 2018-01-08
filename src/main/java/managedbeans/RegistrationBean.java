@@ -322,7 +322,6 @@ public class RegistrationBean {
 	public String details(){
 		System.out.println("value of is RestaurantinDB() : "+isRestaurantInDB());
 		if(isRestaurantInDB()){
-			if(isMenuInDB()) navigateTo ="manageMenus";
 			navigateTo = "manageMenus";
 		}
 		else{
