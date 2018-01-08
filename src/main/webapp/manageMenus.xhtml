@@ -27,7 +27,7 @@
 							<td style="border: 1px solid black;padding: 5px;">#{field.name}</td>
 							<td style="border: 1px solid black;padding: 8px;">#{field.description}</td>
 							<td style="border: 1px solid black;padding: 8px;">#{field.price}</td>
-							<td style="border: 1px solid black;padding: 8px;">?</td>
+							<td style="border: 1px solid black;padding: 8px;">#{field.restaurant.name_restaurant}</td>
 							<td><h:commandButton action="#{registrationBean.removeMenu(field)}" value="#{messages.removeBtn}" /></td>
 							<td><h:commandButton action="#{registrationBean.editMenu(field)}" value="#{messages.editBtn}" /></td>
 						</tr>
