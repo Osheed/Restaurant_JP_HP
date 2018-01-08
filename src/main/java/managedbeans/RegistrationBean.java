@@ -208,18 +208,7 @@ public class RegistrationBean {
 	
 	/*
 	 * Check if lists are empty
-	 */
-	public Boolean isRestaurantInDB(){
-		System.out.println("Is Restaurant in the DB size : "+restaurants.size());
-		if(restaurants.size() == 0){
-			System.out.println("The size of the Restaurants in DB : "+restaurants.size());
-			manageDataInformation = "You need to Add a Restaurant to see this list";
-			return false;
-		}
-		manageDataInformation = "";
-		return true;
-	}
-	
+	 */	
 	public Boolean isMenuInDB(){
 		if(menus.size() == 0){
 			manageMenuInformation = "You need to Add a Menu to see this list";
@@ -242,12 +231,6 @@ public class RegistrationBean {
 		this.menu = null;
 		this.loginInformation = "";
 	}
-	
-
-	
-	
-	
-	
 	
 	/*
 	 * Managing the Restaurants
@@ -346,6 +329,17 @@ public class RegistrationBean {
 			navigateTo = "manageData";
 		}
 		return navigateTo;
+	}
+	
+	public Boolean isRestaurantInDB(){
+		System.out.println("Is Restaurant in the DB size : "+restaurants.size());
+		if(restaurants.size() == 0){
+			System.out.println("The size of the Restaurants in DB : "+restaurants.size());
+			manageDataInformation = "You need to Add a Restaurant to see this list";
+			return false;
+		}
+		manageDataInformation = "";
+		return true;
 	}
 	
     public String getNavigateTo() {
