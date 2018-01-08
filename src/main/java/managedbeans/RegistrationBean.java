@@ -217,11 +217,17 @@ public class RegistrationBean {
 	
 	//TODO: test for owner/DuplicatedValues(name-address)/and no restaurant dont show addmenu
 	public String registerNewRestaurant(){
-		manager.registerRestaurant(addressR, countryR, nameR, postcodeR, this.owner);
-		newRestaurantInformation = "New Restaurant Successfully Created ";
-		navigateTo = "manageData";
+		if(restaurant != null) {
+			manager.updateRestaurant(restaurant, this.nameR, this.addressR, this.postcodeR, this.countryR);
+			newRestaurantInformation = "Restaurant Successfully Updated";
+			resetValueRestaurantNull();
+		} else {
+			manager.registerRestaurant(addressR, countryR, nameR, postcodeR, this.owner);
+			newRestaurantInformation = "New Restaurant Successfully Created ";
+			resetValueRestaurantNull();
+		}	
 		
-		resetValueRestaurantNull();
+		navigateTo = "manageData";
 		//restaurants.clear();
 		return navigateTo;
 	}

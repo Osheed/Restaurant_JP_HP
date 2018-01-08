@@ -22,6 +22,7 @@ public interface IManagement {
 	public List<Restaurant> getRestaurants();
 	public Restaurant getRestaurant(String name);
 	public void removeRestaurant(long restId);
+	public void updateRestaurant(Restaurant rest, String name, String address, int postcode, String country);
 	//public boolean checkRestaurantDuplication(IManagement imanage, String name);
 	
 	

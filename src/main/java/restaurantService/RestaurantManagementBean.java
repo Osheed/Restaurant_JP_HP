@@ -117,6 +117,18 @@ public class RestaurantManagementBean implements IManagement {
 			return null;
 		}
 	}
+	
+	@Override
+	public void updateRestaurant(Restaurant rest, String name, String address, int postcode, String country) {
+		rest.setName_restaurant(name);
+		rest.setAddress(address);
+		rest.setPostcode(postcode);
+		rest.setCountry(country);
+		
+		rest.setOwner(rest.getOwner());
+		System.out.println("RestaurantManagementBean - updateRestaurant");
+		em.merge(rest);
+	}
 
 	@Override
 	public List<Menu> getMenus(Restaurant currentRestaurantId) {
