@@ -291,7 +291,8 @@ public class RegistrationBean {
 		}else{
 			manager.addMenu(this.nameM,this.descriptionM, this.priceM, restaurant);
 			resetValueMenuNull();
-			menus = getMenus();
+			//menus = getMenus();
+			this.menus = this.manager.getMenus();
 		}
 
 		navigateTo = "manageMenus";
@@ -380,13 +381,14 @@ public class RegistrationBean {
 	
 	public List<Menu> getMenus() {
 		this.menus = this.manager.getMenus();
-		List<Menu> restaurantsMenu = new ArrayList<>();
+		/*List<Menu> restaurantsMenu = new ArrayList<>();
 		for(Menu menu : menus){
 			if(menu.getRestaurant().getId().equals(this.restaurant.getId())){
 				restaurantsMenu.add(menu);
 			}
 		}
-		return restaurantsMenu;
+		return restaurantsMenu;*/
+		return this.menus;
 	}
 
 	public void setMenus(List<Menu> menus) {

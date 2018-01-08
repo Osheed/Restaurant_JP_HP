@@ -31,6 +31,6 @@ public interface IManagement {
 	public void addMenu(String name, String desc, float price, Restaurant restaurant);
 	public void updateMenu(Menu menu, String name, String desc, float price);
 	public void removeMenu(long menuId);
-	
+	public Menu getMenu(String name);
 	
 }

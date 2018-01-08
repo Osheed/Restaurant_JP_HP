@@ -20,16 +20,22 @@ public class RestaurantManagementBean implements IManagement {
 	private EntityManager em;
 	
 	@Override
-	public List<Owner> getOwners() {
+	public Owner login(String email, String password) {
 		try {
-			System.out.println("RestaurantBean - getOwners");
-			return em.createQuery("FROM Owner").getResultList();
+			Query query = em.createQuery("FROM Owner o WHERE o.email=:email AND o.password=:password");
+			query.setParameter("email", email);
+			query.setParameter("password", password);
+			
+			Owner owner = (Owner)query.getSingleResult();
+
+			return owner;
 		} catch (Exception e) {
-			System.out.println("RestaurantBean - getOwners failed");
+			System.out.println("RestaurantManagementBean - login failed");
 			e.printStackTrace();
 			return null;
 		}
 	}
+	
 	@Override
 	public void registerOwner( String lastname, String firstname,String password,String phone, String email  ){
 		try{
@@ -44,19 +50,13 @@ public class RestaurantManagementBean implements IManagement {
 		}
 	}
 	
-	
 	@Override
-	public Owner login(String email, String password) {
+	public List<Owner> getOwners() {
 		try {
-			Query query = em.createQuery("FROM Owner o WHERE o.email=:email AND o.password=:password");
-			query.setParameter("email", email);
-			query.setParameter("password", password);
-			
-			Owner owner = (Owner)query.getSingleResult();
-
-			return owner;
+			System.out.println("RestaurantBean - getOwners");
+			return em.createQuery("FROM Owner").getResultList();
 		} catch (Exception e) {
-			System.out.println("RestaurantManagementBean - login failed");
+			System.out.println("RestaurantBean - getOwners failed");
 			e.printStackTrace();
 			return null;
 		}
@@ -77,6 +77,7 @@ public class RestaurantManagementBean implements IManagement {
 			return null;
 		}	
 	}
+	
 	@Override
 	public void registerRestaurant(String address, String country, String restaurantName, int postcode, Owner owner ) {
 		try{
@@ -129,7 +130,23 @@ public class RestaurantManagementBean implements IManagement {
 		System.out.println("RestaurantManagementBean - updateRestaurant");
 		em.merge(rest);
 	}
+	
+	@Override
+	public void removeRestaurant(long restaurantId) {
+		Query query = em.createQuery("FROM Restaurant r WHERE r.id=:restaurantId");
+		query.setParameter("restaurantId", restaurantId);
+		Restaurant rest = (Restaurant)query.getSingleResult();
 
+		em.remove(rest);
+	}
+
+	@Override
+	public void addMenu(String name, String desc, float price, Restaurant restaurant) {
+		System.out.println("RestaurantManagementBean - addMenu");
+		Menu menu = new Menu(name, desc, price, restaurant);		
+		em.persist(menu);
+	}
+	
 	@Override
 	public List<Menu> getMenus() {
 		try {
@@ -140,12 +157,20 @@ public class RestaurantManagementBean implements IManagement {
 			return null;
 		}
 	}
-
+	
 	@Override
-	public void addMenu(String name, String desc, float price, Restaurant restaurant) {
-		System.out.println("RestaurantManagementBean - addMenu");
-		Menu menu = new Menu(name, desc, price, restaurant);		
-		em.persist(menu);
+	public Menu getMenu(String name) {
+		try {
+			Query query = em.createQuery("FROM Menu m WHERE m.name=:name");
+			query.setParameter("name", name);
+			
+			Menu menu = (Menu)query.getSingleResult();
+			System.out.println("RestaurantManagementBean - getMenu");
+			return menu;
+		} catch (Exception e) {
+			System.out.println("RestaurantManagementBean - getMenu failed");
+			return null;
+		}
 	}
 
 	@Override
@@ -157,7 +182,7 @@ public class RestaurantManagementBean implements IManagement {
 		System.out.println("RestaurantManagementBean - updateMenu");
 		em.merge(menu);
 	}
-
+	
 	@Override
 	public void removeMenu(long menuId) {
 		Query query = em.createQuery("FROM Menu m WHERE m.id=:menuId");
@@ -167,12 +192,5 @@ public class RestaurantManagementBean implements IManagement {
 		em.remove(menu);
 	}
 	
-	@Override
-	public void removeRestaurant(long restaurantId) {
-		Query query = em.createQuery("FROM Restaurant r WHERE r.id=:restaurantId");
-		query.setParameter("restaurantId", restaurantId);
-		Restaurant rest = (Restaurant)query.getSingleResult();
 
-		em.remove(rest);
-	}
 }
