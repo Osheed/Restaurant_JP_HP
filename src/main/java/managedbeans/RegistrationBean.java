@@ -81,79 +81,9 @@ public class RegistrationBean {
 		System.out.println("Test initialise in RegistrationBean,Test initialise in RegistrationBean");
 	}
 	
-	public void updateRestaurants(ValueChangeEvent event) {
-		this.sourceRestaurantName = (String)event.getNewValue();
-    	
-	    List<Restaurant> rest = getRestaurants();
-	    this.restaurantNames = new ArrayList<String>();
-		for (Restaurant r : rest) {
-			this.restaurantNames.add(r.getName_restaurant());
-		}
-    }
-	
-	
-	public String registration(){
-		try{
-			if(registrationEmptyValues()){
-				registerInformation = "Please insert all field to register";
-				navigateTo = "register";
-				return navigateTo;
-			}
-			if(!password.equals(confirmPassword)){
-				registerInformation = "Both passwords must be the same";
-				navigateTo ="register";
-				return navigateTo;
-			}
-			if(duplicateEmail()){
-				registerInformation ="Another user uses this email";
-				email = "";
-				navigateTo = "register";
-				return navigateTo;
-			}else{
-				manager.registerOwner(this.lastname, this.firstname, this.password, this.phone, this.email);
-				loginInformation = "You are Register Successfully - Enter your credentials";	
-				navigateTo = "welcomePage";
-				cleanRegistrationForm();
-			}
-		}
-		catch(Exception e){
-			System.out.println("Registration Bean - Registration failed");
-			e.printStackTrace();
-		}
-		return navigateTo;
-	}
-	
-	public void cleanRegistrationForm() {
-		this.lastname = "";
-		this.firstname = "";
-		this.phone = "";
-		this.email = "";
-	}
-	public boolean registrationEmptyValues(){
-		List<String> values = new ArrayList<String>();
-		values.add(this.email);
-		values.add(this.firstname);
-		values.add(this.lastname);
-		values.add(this.password);
-		values.add(this.confirmPassword);
-		values.add(this.phone);
-		
-		for(String value: values){
-			if(value.isEmpty() || value.trim().equals("")||value.contains(" ")){
-				System.out.println("il y a dans values : "+value +".");
-				return true;
-			}
-		}
-		return false;
-	}
-	public boolean duplicateEmail(){
-		Owner check = manager.getOwner(email);
-		System.out.println("Methodd duplicateEmail : Value for check : "+check+".");
-		if(check!=null)return true;
-		return false;
-		
-	}
-	
+	/*
+	 *Manage Login, Logout and Registration 
+	 */
 	public String login(){
 		try {
 			if (isEmptyLoginData()) {
@@ -194,55 +124,117 @@ public class RegistrationBean {
 		return "welcomePage";
 	}
 	
-	/*
-	 * Managing the Restaurants
-	 */
-	public Boolean isRestaurantInDB(){
-		System.out.println("Is Restaurant in the DB size : "+restaurants.size());
-		if(restaurants.size() == 0){
-			System.out.println("The size of the Restaurants in DB : "+restaurants.size());
-			manageDataInformation = "You need to Add a Restaurant to see this list";
-			return false;
-		}
-		manageDataInformation = "";
-		return true;
+	private boolean isEmptyLoginData(){
+		if(this.emailLogin.isEmpty() || this.emailLogin.trim().equals("") || this.passwordLogin.isEmpty() || this.passwordLogin.trim().equals("")) {return true;}
+		return false;
 	}
-	public Boolean isMenuInDB(){
-		System.out.println("In isMenuInDB i have in menu : "+menus.size() +".");
-		List check = manager.getMenus(restaurants.get(0));
-		if(check.size() == 0){
-			manageMenuInformation = "You need to Add a Menu to see this list";
-			return false;
-		}
-		return true;
-	}
-	public String details(){
-			System.out.println("value of is RestaurantinDB() : "+isRestaurantInDB());
-			if(isRestaurantInDB()){
-				System.out.println(" is Restaurant in DB !!!!!!!!!!!!!!!!!!!");
-				if(isMenuInDB()){
-					navigateTo ="manageMenus";
-					System.out.println(" is Menu in DB !!!!!!!!!!!!!!!!!!!!!!!");
-				}
-			}
-			else{
-				navigateTo = "manageData";
-			}
-			return navigateTo;
-			
-		}
-	/* Owner check = manager.getOwner(email);
+	
+	public boolean duplicateEmail(){
+		Owner check = manager.getOwner(email);
 		System.out.println("Methodd duplicateEmail : Value for check : "+check+".");
 		if(check!=null)return true;
-		return false; */
+		return false;
+	}
 	
+	public String registration(){
+		try{
+			if(registrationEmptyValues()){
+				registerInformation = "Please insert all field to register";
+				navigateTo = "register";
+				return navigateTo;
+			}
+			if(!password.equals(confirmPassword)){
+				registerInformation = "Both passwords must be the same";
+				navigateTo ="register";
+				return navigateTo;
+			}
+			if(duplicateEmail()){
+				registerInformation ="Another user uses this email";
+				email = "";
+				navigateTo = "register";
+				return navigateTo;
+			}else{
+				manager.registerOwner(this.lastname, this.firstname, this.password, this.phone, this.email);
+				loginInformation = "You are Register Successfully - Enter your credentials";	
+				navigateTo = "welcomePage";
+				cleanRegistrationForm();
+			}
+		}
+		catch(Exception e){
+			System.out.println("Registration Bean - Registration failed");
+			e.printStackTrace();
+		}
+		return navigateTo;
+	}
+	
+	public boolean registrationEmptyValues(){
+		List<String> values = new ArrayList<String>();
+		values.add(this.email);
+		values.add(this.firstname);
+		values.add(this.lastname);
+		values.add(this.password);
+		values.add(this.confirmPassword);
+		values.add(this.phone);
+		
+		for(String value: values){
+			if(value.isEmpty() || value.trim().equals("")||value.contains(" ")){
+				System.out.println("il y a dans values : "+value +".");
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	
+	/*
+	 *Clean the views after usage 
+	 */
+	public void cleanRegistrationForm() {
+		this.lastname = "";
+		this.firstname = "";
+		this.phone = "";
+		this.email = "";
+	}
+	
+	/*
+	 *set the current restaurant to null for adding a new one 
+	 */
 	public String addRestaurantPage() {
 		this.restaurant = null;
 		navigateTo = "addRestaurant";
 		return navigateTo;
 	}
 	
-	//TODO: test for owner/DuplicatedValues(name-address)/and no restaurant dont show addmenu
+	/*
+	 * Check if lists are empty
+	 */	
+	public Boolean isMenuInDB(){
+		if(menus.size() == 0){
+			manageMenuInformation = "You need to Add a Menu to see this list";
+			return false;
+		}
+		return true;
+	}
+	
+	private void resetValueRestaurantNull(){
+		this.nameR = "";
+		this.addressR = "";
+		this.postcodeR = 0;
+		this.countryR = "";
+	}
+
+	private void resetValueMenuNull(){
+		this.nameM = "";
+		this.descriptionM = "";
+		this.priceM = 0f;
+		this.menu = null;
+		this.loginInformation = "";
+	}
+	
+	/*
+	 * Managing the Restaurants
+	 */
 	public String registerNewRestaurant(){
 		if(this.restaurant != null) {
 			manager.updateRestaurant(this.restaurant, this.nameR, this.addressR, this.postcodeR, this.countryR);
@@ -258,11 +250,17 @@ public class RegistrationBean {
 		//restaurants.clear();
 		return navigateTo;
 	}
-	
-	private boolean isEmptyLoginData(){
-		if(this.emailLogin.isEmpty() || this.emailLogin.trim().equals("") || this.passwordLogin.isEmpty() || this.passwordLogin.trim().equals("")) {return true;}
-		return false;
-	}
+
+	//this method updates the list of the restaurants (names) for the combobox
+	public void updateRestaurants(ValueChangeEvent event) {
+		this.sourceRestaurantName = (String)event.getNewValue();
+    	
+	    List<Restaurant> rest = getRestaurants();
+	    this.restaurantNames = new ArrayList<String>();
+		for (Restaurant r : rest) {
+			this.restaurantNames.add(r.getName_restaurant());
+		}
+    }
 	
 	public String editRestaurant(Restaurant r){
 		this.restaurant = r;
@@ -276,18 +274,11 @@ public class RegistrationBean {
 		navigateTo = "addRestaurant";
 		return navigateTo;
 	}
-	
+
 	public String removeRestaurant(Restaurant r){
 		this.manager.removeRestaurant(r.getId());
 		return null;
 	}
-	
-	private void resetValueRestaurantNull(){
-		this.nameR = "";
-		this.addressR = "";
-		this.postcodeR = 0;
-		this.countryR = "";
-	}	
 	
 	/*
 	 * Managing the Menus
@@ -325,18 +316,31 @@ public class RegistrationBean {
 		return null;
 	}
 	
-	private void resetValueMenuNull(){
-		this.nameM = "";
-		this.descriptionM = "";
-		this.priceM = 0f;
-		this.menu = null;
-		this.loginInformation = "";
-	}	
-   
-	
     /*
      * NavigationRule: Method to navigate 
      */
+	public String details(){
+		System.out.println("value of is RestaurantinDB() : "+isRestaurantInDB());
+		if(isRestaurantInDB()){
+			navigateTo = "manageMenus";
+		}
+		else{
+			navigateTo = "manageData";
+		}
+		return navigateTo;
+	}
+	
+	public Boolean isRestaurantInDB(){
+		System.out.println("Is Restaurant in the DB size : "+restaurants.size());
+		if(restaurants.size() == 0){
+			System.out.println("The size of the Restaurants in DB : "+restaurants.size());
+			manageDataInformation = "You need to Add a Restaurant to see this list";
+			return false;
+		}
+		manageDataInformation = "";
+		return true;
+	}
+	
     public String getNavigateTo() {
 		return navigateTo;
 	}
@@ -359,18 +363,12 @@ public class RegistrationBean {
 	/*
 	 * Getters & Setters
 	 */
-	
-	public String getLastname() {
-		return lastname;
-	}
-	
 	public List<Restaurant> getRestaurants() {
 		this.restaurants = this.manager.getRestaurants();
 		List<Restaurant> ownersRestaurants = new ArrayList<>(); 
 		for (Restaurant restaurant : restaurants) {
 			if(restaurant.getOwner().getId().equals(this.owner.getId())) {
 				ownersRestaurants.add(restaurant);
-				//restaurants.add(restaurant);
 			}
 		}
 		return ownersRestaurants;
@@ -381,12 +379,11 @@ public class RegistrationBean {
 	}
 	
 	public List<Menu> getMenus() {
-		List<Menu> menus = this.manager.getMenus(restaurant);
+		this.menus = this.manager.getMenus(restaurant);
 		List<Menu> restaurantsMenu = new ArrayList<>();
 		for(Menu menu : menus){
 			if(menu.getRestaurant().getId().equals(this.restaurant.getId())){
 				restaurantsMenu.add(menu);
-				
 			}
 		}
 		return restaurantsMenu;
@@ -396,6 +393,10 @@ public class RegistrationBean {
 		this.menus = menus;
 	}
 
+	public String getLastname() {
+		return lastname;
+	}
+	
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
@@ -589,6 +590,5 @@ public class RegistrationBean {
 	public void setManageMenuInformation(String manageMenuInformation) {
 		this.manageMenuInformation = manageMenuInformation;
 	}
-	
-	
+		
 }
