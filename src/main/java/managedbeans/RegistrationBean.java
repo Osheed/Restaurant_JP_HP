@@ -15,10 +15,6 @@ import restaurantService.IManagement;
 
 public class RegistrationBean {
 
-	private IManagement manager;
-	private List<Restaurant> restaurants;
-	private List<Menu> menus;
-	
 	//NavigationRule
 	private String navigateTo;
 	
@@ -27,6 +23,7 @@ public class RegistrationBean {
 	private List<String> restaurantNames;
 	
 	//Objects
+	private IManagement manager;
 	private Owner owner;
 	private Menu menu;
 	private Restaurant restaurant;
@@ -45,12 +42,14 @@ public class RegistrationBean {
 	private String passwordLogin;
 	
 	//Data for Restaurant
+	private List<Restaurant> restaurants;
 	private String addressR;
 	private String countryR;
 	private String nameR;
 	private int postcodeR;
 	
 	//Data for Menu
+	private List<Menu> menus;
 	private String nameM;
 	private String descriptionM;
 	private float priceM;
