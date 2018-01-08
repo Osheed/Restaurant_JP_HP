@@ -16,8 +16,6 @@ public interface IManagement {
 	public Owner getOwner(String email);
 	public Owner login(String email, String password);
 	public void registerOwner(String lastname, String firstname,String password,String phone, String email);
-	//public boolean checkEmailDuplication(IManagement imanage, String email);
-	
 	
 	//For the Restaurant
 	public void registerRestaurant(String address, String country, String restaurantName, int postcode,Owner owner_id);
@@ -25,8 +23,6 @@ public interface IManagement {
 	public Restaurant getRestaurant(String name);
 	public void removeRestaurant(long restId);
 	public void updateRestaurant(Restaurant rest, String name, String address, int postcode, String country);
-	//public boolean checkRestaurantDuplication(IManagement imanage, String name);
-	
 	
 	//For the Menus
 	public List<Menu> getMenus();
