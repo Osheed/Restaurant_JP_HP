@@ -350,7 +350,13 @@ public class RegistrationBean {
 	
 	public List<Menu> getMenus() {
 		List<Menu> menus = this.manager.getMenus(restaurant);
-		return menus;
+		List<Menu> restaurantsMenu = new ArrayList<>();
+		for(Menu menu : menus){
+			if(menu.getRestaurant().getId().equals(this.restaurant.getId())){
+				restaurantsMenu.add(menu);
+			}
+		}
+		return restaurantsMenu;
 	}
 
 	public void setMenus(List<Menu> menus) {
