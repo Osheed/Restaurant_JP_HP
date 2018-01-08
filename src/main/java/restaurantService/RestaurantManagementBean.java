@@ -131,12 +131,10 @@ public class RestaurantManagementBean implements IManagement {
 	}
 
 	@Override
-	public List<Menu> getMenus(Restaurant currentRestaurantId) {
+	public List<Menu> getMenus() {
 		try {
-			Query query = em.createQuery("FROM Menu m where m.restaurant=:restaurant");
-			query.setParameter("restaurant", currentRestaurantId);
 			System.out.println("RestaurantManagementBean - getMenus");
-			return query.getResultList();				
+			return em.createQuery("FROM Menu").getResultList();
 		} catch (Exception e) {
 			System.out.println("RestaurantManagementBean - getMenus failed");
 			return null;

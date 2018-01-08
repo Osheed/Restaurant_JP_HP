@@ -27,7 +27,7 @@ public interface IManagement {
 	
 	
 	//For the Menus
-	public List<Menu> getMenus(Restaurant currentRestaurantId);
+	public List<Menu> getMenus();
 	public void addMenu(String name, String desc, float price, Restaurant restaurant);
 	public void updateMenu(Menu menu, String name, String desc, float price);
 	public void removeMenu(long menuId);
