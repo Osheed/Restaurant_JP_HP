@@ -11,13 +11,11 @@ import businessobject.Menu;
 import businessobject.Owner;
 import businessobject.Rating;
 import businessobject.Restaurant;
-import restaurantService.IRating;
 import restaurantService.IManagement;
 
 public class RegistrationBean {
 
 	private IManagement manager;
-	private IRating iregistration;
 	private List<Restaurant> restaurants;
 	private List<Menu> menus;
 	
