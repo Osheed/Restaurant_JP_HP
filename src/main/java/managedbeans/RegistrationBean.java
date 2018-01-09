@@ -9,6 +9,7 @@ import javax.naming.NamingException;
 
 import businessobject.Menu;
 import businessobject.Owner;
+import businessobject.Rating;
 import businessobject.Restaurant;
 import restaurantService.IManagement;
 
@@ -64,7 +65,7 @@ public class RegistrationBean {
 	public void initialize() throws NamingException {
 		// use JNDI to inject reference to bank EJB
 		InitialContext ctx = new InitialContext();
-		manager = (IManagement) ctx.lookup("java:global/Restaurant-0.0.1-SNAPSHOT/RestaurantBean!restaurantService.IRestaurant");
+		manager = (IManagement) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/RestaurantManagementBean!restaurantService.IManagement");
 		
 		// get restaurants
 		List<Restaurant> restaurantList = manager.getRestaurants();
