@@ -9,6 +9,7 @@ import javax.naming.NamingException;
 
 import businessobject.Menu;
 import businessobject.Owner;
+import businessobject.Rating;
 import businessobject.Restaurant;
 import restaurantService.IManagement;
 
@@ -64,8 +65,15 @@ public class RegistrationBean {
 	public void initialize() throws NamingException {
 		// use JNDI to inject reference to bank EJB
 		InitialContext ctx = new InitialContext();
-		manager = (IManagement) ctx.lookup("java:global/Restaurant-0.0.1-SNAPSHOT/RestaurantBean!restaurantService.IRestaurant");
-				
+		manager = (IManagement) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/RestaurantManagementBean!restaurantService.IManagement");
+		
+		// get restaurants
+		List<Restaurant> restaurantList = manager.getRestaurants();
+		this.restaurantNames = new ArrayList<String>();
+		for (Restaurant r : restaurantList) {
+			this.restaurantNames.add(r.getName_restaurant());
+		}
+		
 		restaurants = new ArrayList<Restaurant>();
 		System.out.println("Test initialise in RegistrationBean,Test initialise in RegistrationBean");
 	}
@@ -235,14 +243,6 @@ public class RegistrationBean {
 			resetValueRestaurantNull();
 		}	
 		
-		// get restaurants
-		List<Restaurant> restaurantList = manager.getRestaurants();
-		this.restaurantNames.clear();
-		this.restaurantNames = new ArrayList<String>();
-		for (Restaurant r : restaurantList) {
-			this.restaurantNames.add(r.getName_restaurant());
-		}
-		
 		navigateTo = "manageData";
 		//restaurants.clear();
 		return navigateTo;
@@ -251,6 +251,12 @@ public class RegistrationBean {
 	//this method updates the list of the restaurants (names) for the combobox
 	public void updateRestaurants(ValueChangeEvent event) {
 		this.sourceRestaurantName = (String)event.getNewValue();
+    	
+	    List<Restaurant> rest = getRestaurants();
+	    this.restaurantNames = new ArrayList<String>();
+		for (Restaurant r : rest) {
+			this.restaurantNames.add(r.getName_restaurant());
+		}
     }
 	
 	public String editRestaurant(Restaurant r){
@@ -311,7 +317,7 @@ public class RegistrationBean {
     /*
      * NavigationRule: Method to navigate 
      */
-	public String details(){		
+	public String details(){
 		System.out.println("value of is RestaurantinDB() : "+isRestaurantInDB());
 		if(isRestaurantInDB()){
 			navigateTo = "manageMenus";
@@ -564,11 +570,15 @@ public class RegistrationBean {
 		return restaurantNames;
 	}
 
+	public void setRestaurantNames(List<String> restaurantNames) {
+		this.restaurantNames = restaurantNames;
+	}
+
 	public String getSourceRestaurantName() {
 		return sourceRestaurantName;
 	}
 
-	public void setSourceRestaurantName(final String sourceRestaurantName) {
+	public void setSourceRestaurantName(String sourceRestaurantName) {
 		this.sourceRestaurantName = sourceRestaurantName;
 	}
 
